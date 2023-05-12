@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:paddingLeft="10dp"
+    android:paddingRight="16dp">
+
+    <ImageView
+        android:id="@+id/lotus"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/lotus" />
+
+    <ImageView
+        android:id="@+id/OpenBook"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/lotus"
+        android:layout_centerHorizontal="true"
+        android:elevation="4dp"
+        android:src="@drawable/openbook" />
+
+    <TextView
+        android:id="@+id/SignUp"
+        android:layout_width="242dp"
+        android:layout_height="57dp"
+        android:layout_below="@+id/OpenBook"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/inter_bold"
+
+        android:gravity="center_horizontal|top"
+        android:text="Sign Up"
+        android:textColor="@color/blue1"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/backSUp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@android:string/ok"
+        android:src="@drawable/union">
+
+    </ImageButton>
+
+    <TableRow
+        android:id="@+id/tableRowEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SignUp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp">
+
+        <ImageView
+            android:id="@+id/ImageE"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="-10dp"
+            app:boxBackgroundColor="@color/white"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/emailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="-10dp"
+
+                android:hint="Email/Gmail"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/teal_700"
+                android:textSize="20dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/tableRowName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableRowEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp">
+
+        <ImageView
+            android:id="@+id/ImageU"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/user" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameTilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="-10dp"
+            app:boxBackgroundColor="@color/white"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/UserNameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="-10dp"
+
+                android:hint="User Name"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/teal_700"
+                android:textSize="20dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRowPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableRowName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true">
+
+        <ImageView
+            android:id="@+id/ImageL"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/lock" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passTilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="-10dp"
+            app:boxBackgroundColor="@color/white"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/passET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="-10dp"
+
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/teal_700"
+                android:textSize="20dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRowCPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableRowPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true">
+
+        <ImageView
+            android:id="@+id/ImageCL"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/lock" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cpassTilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="-10dp"
+            app:boxBackgroundColor="@color/white"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/cpassET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="-10dp"
+
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/teal_700"
+                android:textSize="20dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </TableRow>
+
+    <android.widget.Button
+        android:id="@+id/btSUp"
+        android:layout_width="144dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tableRowCPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_signup_background"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+</RelativeLayout>
