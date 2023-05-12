@@ -33,6 +33,57 @@ public class HomePageAdminActivity extends AppCompatActivity {
 
             }
         });
+
+        binding.categoryIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, CategoryActivity.class));
+
+            }
+        });
+
+        binding.rewardIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, RewardActivity.class));
+
+            }
+        });
+        binding.filterIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, FilterActivity.class));
+
+            }
+        });
+
+        binding.libraryIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, LibraryActibity.class));
+
+            }
+        });
+        binding.homeIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this,HomePageAdminActivity.class));
+
+            }
+        });
+        binding.accountIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, AccountActivity.class));
+
+            }
+        });
     }
 
     private void checkUser()

@@ -63,9 +63,17 @@
                     android:id="@+id/contentsearchTV"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="7"
+                    android:layout_weight="6"
                     android:inputType="text"
                     android:hint="Search"/>
+                <ImageButton
+                    android:id="@+id/editIB"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:contentDescription="searchButton"
+                    android:src="@drawable/pen"
+                    android:background="@android:color/transparent"/>
 
                 <ImageButton
                     android:id="@+id/searchIB"
@@ -234,7 +242,7 @@
             android:src="@drawable/home"
             android:background="@android:color/transparent"/>
         <ImageButton
-            android:id="@+id/userIB"
+            android:id="@+id/accountIB"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
