@@ -66,16 +66,16 @@
                     android:layout_weight="6"
                     android:inputType="text"
                     android:hint="Search"/>
-                <ImageButton
-                    android:id="@+id/editIB"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:contentDescription="searchButton"
-                    android:src="@drawable/pen"
-                    android:background="@android:color/transparent"/>
+            <ImageButton
+                android:id="@+id/uploadIB"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:contentDescription="upload-Button: trang đăng truyện"
+                android:src="@drawable/pen"
+                android:background="@android:color/transparent"/>
 
-                <ImageButton
+            <ImageButton
                     android:id="@+id/searchIB"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
@@ -168,14 +168,17 @@
                     android:textStyle="italic"
                     android:textColor="@color/red"/>
             </TableRow>
-            <HorizontalScrollView
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/truyenmoicapnhapRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="6"
-                android:contentDescription="gridview">
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_update_homepage" />
 
 
-            </HorizontalScrollView>
         </LinearLayout>
 
         <LinearLayout

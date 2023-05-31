@@ -34,6 +34,13 @@ public class HomePageAdminActivity extends AppCompatActivity {
             }
         });
 
+        binding.uploadIB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePageAdminActivity.this, UploadActivity.class));
+
+            }
+        });
         binding.categoryIB.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
@@ -64,7 +71,7 @@ public class HomePageAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(HomePageAdminActivity.this, LibraryActibity.class));
+                startActivity(new Intent(HomePageAdminActivity.this, LibraryActivity.class));
 
             }
         });
