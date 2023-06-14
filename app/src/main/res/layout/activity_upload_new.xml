@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".UploadNewActivity"
+    android:orientation="vertical">
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_weight="0.75"
+        android:background="@drawable/boder">
+
+        <ImageView
+            android:id="@+id/backBT1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:text="Đăng truyện"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/save" />
+
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="0.75"
+        android:orientation="horizontal"
+        android:background="@drawable/boder">
+
+        <TextView
+            android:id="@+id/chuong"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Tên truyện"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txttenTruyen"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Nhập tên truyện"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="0.75"
+        android:orientation="horizontal"
+        android:background="@drawable/boder">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Tác giả"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txttacGia"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Nhập tên tác giả"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="0.75"
+        android:orientation="horizontal"
+        android:background="@drawable/boder">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Số chương"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtsoChuong"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Nhập số chương"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="0.75"
+        android:text="Giới thiệu"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtnoiDung"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_weight="0.75"
+        android:hint="Nhập nội dung"
+        android:textSize="20sp" />
+
+</LinearLayout>

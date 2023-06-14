@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TableRow
+        android:id="@+id/headTableRow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="0.75"
+        android:background="@drawable/boder">
+
+        <ImageButton
+            android:id="@+id/backBT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/pageDT"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="Đăng truyện"
+            android:textColor="@color/grey"
+            android:textSize="30sp" />
+
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#6FD566"
+        android:baselineAligned="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:scrollbarDefaultDelayBeforeFade="600">
+
+        <ImageButton
+            android:layout_width="105dp"
+            android:layout_height="160dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="Ảnh của truyện" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/edChuongMoi"
+                android:layout_width="155dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="14dp"
+                android:text="Chương mới"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edTinhTrang"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/edChuongMoi"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="17dp"
+                android:text="Tình trạng"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toStartOf="@+id/edChuongMoi"
+                android:text="Chương mới"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textView4"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="Tình trạng"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textView6"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toStartOf="@+id/edTenTruyen"
+                android:text="Tên truyện"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="98dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textView5"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="21dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toStartOf="@+id/edTacGia"
+                android:text="Tác giả"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edTenTruyen"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/edTacGia"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="13dp"
+                android:text="Tên truyện"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edTacGia"
+                android:layout_width="164dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/edTinhTrang"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="13dp"
+                android:text="Tác giả"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/DSChuong"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Danh sách chương"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_list_chapter" />
+
+    <ImageView
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/add" />
+
+
+</LinearLayout>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    tools:context=".HomePageUserActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/headRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_centerHorizontal="true"
+                android:text="HomePage User"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/subTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleTv"
+                android:layout_marginTop="-7dp"
+                android:text="abc@gmail.com"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageButton
+                android:id="@+id/logoutBt"
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Log out"
+                android:src="@drawable/logout" />
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/searchTableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FF03DAC5"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/contentsearchTV"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="7"
+                android:inputType="text"
+                android:hint="Search"/>
+            <ImageButton
+                android:id="@+id/uploadIB"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:contentDescription="upload-Button: trang đăng truyện"
+                android:src="@drawable/pen"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/searchIB"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:contentDescription="searchButton"
+                android:src="@drawable/search"
+                android:background="@android:color/transparent"/>
+
+
+        </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#4CAF50">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/contentBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:contentDescription="content">
+        <TableRow
+            android:id="@+id/option"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/vien">
+            <ImageButton
+                android:id="@+id/categoryIB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="searchButton"
+                android:src="@drawable/category"
+                android:background="@android:color/transparent" />
+            <ImageButton
+                android:id="@+id/rewardIB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="searchButton"
+                android:src="@drawable/reward"
+                android:background="@android:color/transparent"/>
+            <ImageButton
+                android:id="@+id/filterIB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="searchButton"
+                android:src="@drawable/filter"
+                android:background="@android:color/transparent"/>
+        </TableRow>
+        <LinearLayout
+            android:id="@+id/update"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/option"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:background="@drawable/vien">
+            <TableRow
+                android:id="@+id/tablerow1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/truyenMoiCapNhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="Truyện mới cập nhập"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/xemThem1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xem thêm>"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/red"/>
+            </TableRow>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:contentDescription="gridview">
+
+
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reading"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/update"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:background="@drawable/vien">
+            <TableRow
+                android:id="@+id/tablerow2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/truyendangdoc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="Truyện đang đọc"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/xemThem2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Xem thêm>"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/red"/>
+            </TableRow>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:contentDescription="gridview">
+
+
+            </HorizontalScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+        <ImageButton
+            android:id="@+id/libraryIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/libtoolbar"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/homeIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/home"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/accountIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/useraccount"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+
+</LinearLayout>
