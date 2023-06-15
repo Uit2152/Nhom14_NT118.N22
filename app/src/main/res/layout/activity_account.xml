@@ -1,9 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AccountActivity">
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".AccountActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TableRow
+        android:id="@+id/headTableRow"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_weight="0.75"
+        android:background="@drawable/boder">
+
+        <ImageButton
+            android:id="@+id/backBT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/pageTV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="Tài khoản"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- User Avatar -->
+        <ImageView
+            android:id="@+id/avatarImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="ok"
+            android:src="@drawable/useraccount" />
+
+        <!-- User Details -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <!-- User Name -->
+            <TextView
+                android:id="@+id/nameAC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Họ và tên"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <!-- User Email -->
+            <TextView
+                android:id="@+id/emailAC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cài đặt tài khoản"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/NenVaMauChuButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Thay đổi nền và màu chữ"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/LienHeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Liên hệ"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/ChinhSachButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Chính sách"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/DanhGiaButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Đánh giá"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/VeChungToiButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Về chúng tôi"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/EmailGopYButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Email góp ý"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/DangXuatButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Đăng xuất"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        />
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        />
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        />
+
+</LinearLayout>
