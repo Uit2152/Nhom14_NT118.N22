@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RewardActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".RewardActivity">
     <TableRow
         android:id="@+id/headTableRow"
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:gravity="center_horizontal"
             android:textSize="30sp"
             android:text="Bảng xếp hạng"
-            android:textColor="@color/grey"/>
+            android:textColor="@color/black"/>
     </TableRow>
 
     <HorizontalScrollView
