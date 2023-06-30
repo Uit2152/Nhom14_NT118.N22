@@ -10,24 +10,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.MyViewHolder> {
+public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.MyViewHolder>{
     private List<Story> storyList;
 
-    public FilterAdapter(List<Story> storyList) {
+    public LibraryAdapter(List<Story> storyList) {
         this.storyList = storyList;
     }
 
 
     @NonNull
     @Override
-    public FilterAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LibraryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_reward, parent, false);
-        return new FilterAdapter.MyViewHolder(itemView);
+                .inflate(R.layout.row_library, parent, false);
+        return new LibraryAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FilterAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LibraryAdapter.MyViewHolder holder, int position) {
         if (storyList == null || storyList.isEmpty()) {
             return;
         }
@@ -35,11 +35,6 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.MyViewHold
         if (story != null) {
             String name = story.gettenTV() != null ? story.gettenTV() : "Unknown";
             holder.tenTV.setText(name);
-            holder.tacgiaTV.setText(story.gettacgiaTV());
-            holder.tinhtrangTV.setText(story.gettinhtrangTV());
-
-            int sochuong = story.getsochuongTV();
-            holder.sochuongTV.setText(String.valueOf(sochuong));
         }
     }
 
@@ -54,13 +49,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.MyViewHold
         public MyViewHolder(View itemView) {
             super(itemView);
             tenTV = itemView.findViewById(R.id.tenTV);
-            tacgiaTV = itemView.findViewById(R.id.tacgiaTV);
-            tinhtrangTV = itemView.findViewById(R.id.tinhtrangTV);
-            sochuongTV = itemView.findViewById(R.id.sochuongTV);
         }
     }
-    public void updateData(List<Story> filteredList) {
-        storyList = filteredList;
-        notifyDataSetChanged();
-    }
+
 }

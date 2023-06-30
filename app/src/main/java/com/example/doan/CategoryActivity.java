@@ -27,31 +27,77 @@ public class CategoryActivity extends AppCompatActivity {
     private ActivityCategoryBinding binding;
     private RecyclerView recyclerView;
     private FirebaseAuth firebaseAuth;
+    private int category = 1; // Đặt giá trị mặc định của category là 1 (Tiên hiệp)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= ActivityCategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         //handle click backSUp( go-back button)
-        binding.backBT.setOnClickListener(new View.OnClickListener()
-                                           {
-                                               @Override
-                                               public void onClick(View v)
-                                               {
-                                                   onBackPressed();
-                                               }
-                                           }
-        );
+        binding.backBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         recyclerView = findViewById(R.id.categoryRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        loadStoriesByCategory(category); // Gọi phương thức loadStoriesByCategory() để hiển thị danh sách truyện Tiên hiệp
+
+        // Thiết lập sự kiện cho các TextView chứa tên thể loại
+        binding.c1TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                category = 1;
+                loadStoriesByCategory(category);
+            }
+        });
+
+        binding.c2TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                category = 2;
+                loadStoriesByCategory(category);
+            }
+        });
+
+        binding.c3TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                category = 3;
+                loadStoriesByCategory(category);
+            }
+        });
+
+        binding.c4TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                category = 4;
+                loadStoriesByCategory(category);
+            }
+        });
+
+        binding.c5TV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                category = 5;
+                loadStoriesByCategory(category);
+            }
+        });
+    }
+
+    // Phương thức loadStoriesByCategory() để lấy danh sách truyện theo thể loại
+    private void loadStoriesByCategory(int category) {
         // Tạo kết nối tới Firebase và lấy dữ liệu truyện theo yêu cầu
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Truyen");
 
-        myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
+        // Lọc danh sách truyện theo thể loại được chọn
+        myRef.orderByChild("maTL").equalTo(category).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Story> storyList = new ArrayList<>();
@@ -59,7 +105,6 @@ public class CategoryActivity extends AppCompatActivity {
                     Story story = snapshot.getValue(Story.class);
                     storyList.add(story);
                 }
-
                 displayStoryList(storyList);
             }
 
@@ -68,8 +113,9 @@ public class CategoryActivity extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
-
     }
+
+    // Phương thức displayStoryList() để hiển thị danh sách truyện lên RecyclerView
     private void displayStoryList(List<Story> storyList) {
         CategoryAdapter adapter = new CategoryAdapter(storyList);
         recyclerView.setAdapter(adapter);
