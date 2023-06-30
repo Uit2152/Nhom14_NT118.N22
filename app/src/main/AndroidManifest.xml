@@ -50,6 +50,9 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".SetingACActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

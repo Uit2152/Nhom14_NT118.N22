@@ -86,7 +86,6 @@ tools:context=".AccountActivity">
         android:layout_height="wrap_content"
         android:text="Cài đặt tài khoản"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"
         android:textSize="17sp" />
 
     <Button
@@ -94,7 +93,6 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTint="@color/white"
         android:text="Thay đổi nền và màu chữ"
         android:textColor="@color/black"
         android:textSize="17sp" />
@@ -103,7 +101,7 @@ tools:context=".AccountActivity">
         android:id="@+id/LienHeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+
         android:text="Liên hệ"
         android:textColor="@color/black"
         android:textSize="17sp" />
@@ -113,7 +111,6 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTint="@color/white"
         android:text="Chính sách"
         android:textColor="@color/black"
         android:textSize="17sp" />
@@ -123,7 +120,6 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTint="@color/white"
         android:text="Đánh giá"
         android:textColor="@color/black"
         android:textSize="17sp" />
@@ -133,7 +129,6 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTint="@color/white"
         android:text="Về chúng tôi"
         android:textColor="@color/black"
         android:textSize="17sp" />
@@ -143,8 +138,6 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTintMode="@drawable/boder1"
-        android:backgroundTint="@color/white"
         android:text="Email góp ý"
         android:textColor="@color/black"
         android:textSize="17sp" />
