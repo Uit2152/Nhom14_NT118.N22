@@ -29,7 +29,7 @@ public class AccountActivity extends AppCompatActivity {
                                               }
                                           }
         );
-        binding.settingsButton.setOnClickListener(new View.OnClickListener(){
+        binding.setingBT.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
             {
