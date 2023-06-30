@@ -2,17 +2,31 @@ package com.example.doan;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ChangeThemeActivity extends AppCompatActivity {
 
-    private Spinner backgroundSpinner;
-    private Spinner textColorSpinner;
+    private static final String SHARED_PREFERENCES_NAME = "com.example.doan.theme";
+    private static final String KEY_BACKGROUND_COLOR = "background_color";
 
+    private Spinner backgroundSpinner;
     private SharedPreferences sharedPreferences;
+
+    private int[] backgroundColors = {
+            Color.WHITE,
+            Color.BLACK,
+            Color.BLUE,
+            Color.RED,
+            Color.YELLOW
+    };
+    private String[] colorNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,30 +34,41 @@ public class ChangeThemeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_theme);
 
         backgroundSpinner = findViewById(R.id.backgroundSpinner);
-        textColorSpinner = findViewById(R.id.textColorSpinner);
 
-        sharedPreferences = getSharedPreferences("theme", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
 
-        // Lấy màu nền và màu chữ đã lưu trữ
-        int backgroundIndex = sharedPreferences.getInt("background", 0);
-        int textColorIndex = sharedPreferences.getInt("textColor", 0);
+        colorNames = getResources().getStringArray(R.array.background_colors);
 
-        // Thiết lập màu nền và màu chữ cho các Spinner
-        backgroundSpinner.setSelection(backgroundIndex);
-        textColorSpinner.setSelection(textColorIndex);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, colorNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        backgroundSpinner.setAdapter(adapter);
+
+        int backgroundColorIndex = sharedPreferences.getInt(KEY_BACKGROUND_COLOR, 0);
+        if (isValidIndex(backgroundColorIndex)) {
+            backgroundSpinner.setBackgroundColor(backgroundColors[backgroundColorIndex]);
+            backgroundSpinner.setSelection(backgroundColorIndex);
+        }
+
+        backgroundSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (isValidIndex(position)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt(KEY_BACKGROUND_COLOR, position);
+                    editor.apply();
+
+                    backgroundSpinner.setBackgroundColor(backgroundColors[position]);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        // Lưu trữ màu nền và màu chữ được chọn
-        int backgroundIndex = backgroundSpinner.getSelectedItemPosition();
-        int textColorIndex = textColorSpinner.getSelectedItemPosition();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("background", backgroundIndex);
-        editor.putInt("textColor", textColorIndex);
-        editor.apply();
+    private boolean isValidIndex(int index) {
+        return index >= 0 && index < backgroundColors.length;
     }
 }

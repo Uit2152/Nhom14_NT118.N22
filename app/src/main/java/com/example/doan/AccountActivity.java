@@ -15,6 +15,7 @@ public class AccountActivity extends AppCompatActivity {
     private ActivityAccountBinding binding;
     //firebase auth
     private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,8 @@ public class AccountActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
 
     }

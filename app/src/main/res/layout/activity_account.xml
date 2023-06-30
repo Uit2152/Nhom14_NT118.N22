@@ -93,7 +93,7 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Thay đổi nền và màu chữ"
+        android:text="Thay đổi màu nền"
         android:textColor="@color/black"
         android:textSize="17sp" />
 
