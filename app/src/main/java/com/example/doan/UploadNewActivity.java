@@ -107,6 +107,7 @@ public class UploadNewActivity extends AppCompatActivity {
         hashMap.put("sochuongTV",""+sochuongTV);
         hashMap.put("Mota", ""+Mota);
         hashMap.put("timestamp",timestamp);
+
         //Story truyen = new Story(tenTV, tacgiaTV, sochuongTV, Mota);
 
         databaseReference.child(""+timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
