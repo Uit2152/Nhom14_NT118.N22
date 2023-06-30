@@ -154,24 +154,11 @@ tools:context=".AccountActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:backgroundTint="@color/white"
+
         android:text="Đăng xuất"
         android:textColor="@color/black"
         android:textSize="17sp"
         />
-    <Button
-        android:id="@+id/bt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
 
-        />
-    <Button
-        android:id="@+id/bt1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-
-        />
 
 </LinearLayout>

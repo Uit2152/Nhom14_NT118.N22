@@ -26,7 +26,8 @@ public class HomePageUserActivity extends AppCompatActivity {
 
         firebaseAuth= FirebaseAuth.getInstance();
         checkUser();
-
+        //create data for reading and updating
+        setUpData();
         binding.logoutBt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
@@ -93,6 +94,38 @@ public class HomePageUserActivity extends AppCompatActivity {
 
             }
         });
+        binding.xemThem1TV.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageUserActivity.this, CategoryActivity.class));
+
+            }
+        });
+        binding.xemThem2TV.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageUserActivity.this, CategoryActivity.class));
+
+            }
+        });
+        binding.contentsearchTV.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageUserActivity.this, SearchActivity.class));
+
+            }
+        });
+        binding.searchIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageUserActivity.this, SearchActivity.class));
+
+            }
+        });
     }
     private void checkUser()
     {
@@ -106,5 +139,10 @@ public class HomePageUserActivity extends AppCompatActivity {
             String email= firebaseUser.getEmail();
             binding.subTitleTv.setText(email);
         }
+    }
+
+    private void setUpData()
+    {
+
     }
 }

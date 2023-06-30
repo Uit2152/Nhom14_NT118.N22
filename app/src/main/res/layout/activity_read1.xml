@@ -43,10 +43,18 @@
 
     </TableRow>
     <TextView
+        android:id="@+id/test"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
         android:hint="Nội dung chương"/>
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar" />
+
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="0dp"
