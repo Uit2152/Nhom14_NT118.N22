@@ -59,4 +59,8 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.MyViewHold
             sochuongTV = itemView.findViewById(R.id.sochuongTV);
         }
     }
+    public void updateData(List<Story> filteredList) {
+        storyList = filteredList;
+        notifyDataSetChanged();
+    }
 }
