@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_marginRight="5dp"
+android:layout_marginLeft="5dp"
+tools:context=".LibraryActivity"
+android:orientation="vertical"
+    android:windowSoftInputMode="adjustResize">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/headRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/backBT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/subTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Thư viện"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/searchTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FF03DAC5"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/contentsearchTV"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="6"
+            android:hint="Search"
+            android:inputType="text" />
+
+        <ImageButton
+            android:id="@+id/searchIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/search"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/contentBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:contentDescription="content">
+
+        <TableRow
+            android:id="@+id/option"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/vien">
+
+            <Button
+                android:id="@+id/historyBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Lịch sử đọc"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/bookmarkBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Truyện đánh dấu"
+                android:textColor="@android:color/black" />
+
+        </TableRow>
+
+        <LinearLayout
+            android:id="@+id/HTtruyen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/option"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:background="@drawable/vien"
+            android:padding="8dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/truyenmoicapnhapRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="15"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:listitem="@layout/row_library" />
+
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7">
+        <ImageButton
+            android:id="@+id/libraryIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/libtoolbar"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/homeIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/home"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/accountIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/useraccount"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+</LinearLayout>
