@@ -1,12 +1,11 @@
 package com.example.doan;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.doan.databinding.ActivityCategoryBinding;
-import com.example.doan.databinding.ActivityRegisterBinding;
 
 public class CategoryActivity extends AppCompatActivity {
 
