@@ -86,8 +86,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đang ra" />
-
             </RadioGroup>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,12 +105,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tiên hiệp" />
+                <RadioButton
+                    android:id="@+id/KH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kiếm hiệp" />
+
+                <RadioButton
+                    android:id="@+id/NT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngôn tình" />
+
 
                 <RadioButton
                     android:id="@+id/DT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đô thị" />
+
+                <RadioButton
+                    android:id="@+id/TT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trinh thám" />
 
             </RadioGroup>
             <TextView
@@ -119,40 +137,41 @@
                 android:textColor="@color/black"
                 android:text="Số chương:" />
 
-            <LinearLayout
-                android:id="@+id/chapter"
+            <RadioGroup
+                android:id="@+id/SoChuong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn1"
+                <RadioButton
+                    android:id="@+id/Duoi100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100" />
+                    android:text="Dưới 100" />
 
-                <Button
-                    android:id="@+id/btn2"
+                <RadioButton
+                    android:id="@+id/Duoi500"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100-500" />
+                    android:text="100 đến 500" />
 
-                <Button
-                    android:id="@+id/btn3"
+                <RadioButton
+                    android:id="@+id/Duoi1000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500-1000" />
-                <Button
-                    android:id="@+id/btn4"
+                    android:text="500 đến 1000" />
+
+                <RadioButton
+                    android:id="@+id/Tren1000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1000" />
-            </LinearLayout>
+                    android:text="Trên 1000" />
+            </RadioGroup>
         </LinearLayout>
     </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecyclerView"
+        android:id="@+id/filterRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
