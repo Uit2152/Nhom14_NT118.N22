@@ -37,6 +37,14 @@ public class AccountActivity extends AppCompatActivity {
 
             }
         });
+        binding.NenVaMauChuButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(AccountActivity.this, ChangeThemeActivity.class));
+
+            }
+        });
         binding.DangXuatButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
