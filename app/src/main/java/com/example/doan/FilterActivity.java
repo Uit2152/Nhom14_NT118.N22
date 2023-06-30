@@ -2,6 +2,7 @@ package com.example.doan;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,8 @@ public class FilterActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FilterAdapter adapter;
     private List<Story> storyList;
+    private SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +139,13 @@ public class FilterActivity extends AppCompatActivity {
             // Cập nhật danh sách truyện được hiển thị trong Adapter
             adapter.updateData(filteredList);
         });
+        // Lấy giá trị màu mới từ SharedPreferences
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int backgroundColor = sharedPreferences.getInt("background_color", R.color.new_background_color);
+
+        // Thiết lập màu nền cho toàn bộ trang
+        getWindow().getDecorView().setBackgroundColor(getResources().getColor(backgroundColor));
+
 
     }
 

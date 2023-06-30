@@ -29,6 +29,7 @@ public class CategoryActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private int category = 1; // Đặt giá trị mặc định của category là 1 (Tiên hiệp)
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,7 @@ public class CategoryActivity extends AppCompatActivity {
                 loadStoriesByCategory(category);
             }
         });
+
     }
 
     // Phương thức loadStoriesByCategory() để lấy danh sách truyện theo thể loại

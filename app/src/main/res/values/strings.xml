@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">DoAn</string>
+    <string-array name="background_colors">
+        <item>#FFFFFF</item>
+        <item>#00BCD4</item>
+        <item>#98C0DF</item>
+        <item>#8287A8</item>
+        <item>#AEAEE8</item>
+        <item>#F6D290</item>
+        <item>#DAC8A8</item>
+        <item>#EDE483</item>
+        <item>#FFA500</item>
+        <item>#5CC1B8</item>
+        <item>#70A872</item>
+        <item>#AAE1AA</item>
+        <item>#DAB1E1</item>
+        <item>#F6E2FA</item>
+        <item>#CF7C9A</item>
+        <item>#ECB5C9</item>
+        <item>#B895A1</item>
+        <item>#BEAEC1</item>
+    </string-array>
+
 </resources>
