@@ -65,7 +65,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
-                android:text="HUYỀN HUYỄN"
+                android:text="KIẾM HIỆP"
                 android:textColor="@color/grey"
                 android:textSize="25sp" />
 
@@ -75,7 +75,27 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
+                android:text="NGÔN TÌNH"
+                android:textColor="@color/grey"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/c4TV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="15dp"
                 android:text="ĐÔ THỊ"
+                android:textColor="@color/grey"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/c5TV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="15dp"
+                android:text="TRINH THÁM"
                 android:textColor="@color/grey"
                 android:textSize="25sp" />
         </LinearLayout>
