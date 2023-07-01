@@ -11,7 +11,7 @@ public class Story {
     private int maTL;
     private String image;
     private String uid;
-
+    private int Views;
 
     public Story() {
     }
@@ -109,5 +109,9 @@ public class Story {
     }
 
 
+    public void setViews(int views) { Views=views;
+    }
 
+    public int getViews() { return Views;
+    }
 }
