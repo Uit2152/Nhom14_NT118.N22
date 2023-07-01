@@ -47,8 +47,7 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.categoryRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        loadStoriesByCategory(category); // Gọi phương thức loadStoriesByCategory() để hiển thị danh sách truyện Tiên hiệp
-
+        loadStoriesByCategory(category);
         // Thiết lập sự kiện cho các TextView chứa tên thể loại
         binding.c1TV.setOnClickListener(new View.OnClickListener() {
             @Override

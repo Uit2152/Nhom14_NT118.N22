@@ -160,7 +160,7 @@ public class FilterActivity extends AppCompatActivity {
         List<Story> filteredList = new ArrayList<>();
         for (Story story : storyList) {
             // Kiểm tra trạng thái
-            if (!tinhTrang.isEmpty() && !story.gettinhtrangTV().equals(tinhTrang)) {
+            if (tinhTrang != null&&!tinhTrang.isEmpty() && !story.gettinhtrangTV().equals(tinhTrang)) {
                 continue;
             }
 
@@ -170,7 +170,7 @@ public class FilterActivity extends AppCompatActivity {
             }
             // Kiểm tra số lượng chương
             int soChuong = story.getsochuongTV();
-            if (soChuong < minChapter || soChuong > maxChapter) {
+            if ( soChuong < minChapter || soChuong > maxChapter) {
                 continue;
             }
             filteredList.add(story);
