@@ -11,25 +11,14 @@ tools:context=".AccountActivity">
     <TableRow
         android:id="@+id/headTableRow"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_weight="0.75"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
         android:background="@drawable/boder">
-
-        <ImageButton
-            android:id="@+id/backBT"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:contentDescription="@android:string/ok"
-            android:src="@drawable/arrow_right" />
 
         <TextView
             android:id="@+id/pageTV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:gravity="center_horizontal"
             android:text="Tài khoản"
             android:textColor="@color/black"
@@ -38,7 +27,7 @@ tools:context=".AccountActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="148dp"
+        android:layout_height="150dp"
         android:background="@color/white"
         android:orientation="horizontal"
         android:padding="16dp">
@@ -83,75 +72,83 @@ tools:context=".AccountActivity">
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Cài đặt tài khoản"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/NenVaMauChuButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="50dp"
         android:text="Thay đổi màu nền"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/LienHeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        android:text="Liên hệ"
-        android:textColor="@color/black"
-        android:textSize="17sp" />
 
     <Button
         android:id="@+id/ChinhSachButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="50dp"
         android:text="Chính sách"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/DanhGiaButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:text="Đánh giá"
-        android:textColor="@color/black"
-        android:textSize="17sp" />
 
     <Button
         android:id="@+id/VeChungToiButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="50dp"
         android:text="Về chúng tôi"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/EmailGopYButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="50dp"
         android:text="Email góp ý"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/DangXuatButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-
+        android:layout_height="60dp"
         android:text="Đăng xuất"
         android:textColor="@color/black"
-        android:textSize="17sp"
+        android:textSize="20sp"
         />
-
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7">
+        <ImageButton
+            android:id="@+id/libraryIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/libtoolbar"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/homeIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/home"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/accountIB"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:contentDescription="searchButton"
+            android:src="@drawable/useraccount"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
 
 </LinearLayout>

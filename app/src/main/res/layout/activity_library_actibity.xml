@@ -10,64 +10,41 @@ android:layout_marginLeft="5dp"
 tools:context=".LibraryActivity"
 android:orientation="vertical"
     android:windowSoftInputMode="adjustResize">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/headRelativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:id="@+id/backBT"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:contentDescription="@android:string/ok"
-            android:src="@drawable/arrow_right" />
-
-        <TextView
-            android:id="@+id/subTitleTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="Thư viện"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-    </RelativeLayout>
     <LinearLayout
-        android:id="@+id/searchTableLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#FF03DAC5"
-        android:orientation="horizontal">
+        android:layout_weight="0.5"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/contentsearchTV"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="6"
-            android:hint="Search"
-            android:inputType="text" />
+        <RelativeLayout
+            android:id="@+id/headRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/searchIB"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:contentDescription="searchButton"
-            android:src="@drawable/search"
-            android:background="@android:color/transparent"/>
+            <ImageButton
+                android:id="@+id/backBT"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:contentDescription="@android:string/ok"
+                android:src="@drawable/arrow_right" />
+
+            <TextView
+                android:id="@+id/subTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Thư viện"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
     </LinearLayout>
-
-</LinearLayout>
     <RelativeLayout
         android:id="@+id/contentBody"
         android:layout_width="match_parent"

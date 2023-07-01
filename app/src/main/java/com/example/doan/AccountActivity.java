@@ -23,13 +23,7 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         firebaseAuth= FirebaseAuth.getInstance();
         checkUser();
-        binding.backBT.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  onBackPressed();
-                                              }
-                                          }
-        );
+
         binding.settingsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
@@ -56,6 +50,30 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        binding.libraryIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(AccountActivity.this, LibraryActivity.class));
+
+            }
+        });
+        binding.homeIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(AccountActivity.this,HomePageUserActivity.class));
+
+            }
+        });
+        binding.accountIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(AccountActivity.this, AccountActivity.class));
+
+            }
+        });
 
 
 
