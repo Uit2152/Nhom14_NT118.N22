@@ -30,7 +30,8 @@ public class HomePageAdminActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 firebaseAuth.signOut();
-
+                startActivity(new Intent(HomePageAdminActivity.this, MainActivity.class));
+                finish();
             }
         });
 
