@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".SetingACActivity">
 
+
     <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerLayout"
@@ -56,16 +57,16 @@
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:inputType="text"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/emailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="0dp"
             android:text="Email:"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -74,16 +75,32 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/currentPasswordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Current Password:"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
+        <EditText
+            android:id="@+id/currentPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/passwordLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="0dp"
             android:text="Password:"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -92,34 +109,25 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="5dp"
             android:text="Save"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/changePasswordButton"
+            android:id="@+id/changeProfileImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Change Password"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/changeAvatarButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="5dp"
             android:text="Change Avatar"
             android:textColor="@color/white"
             android:textSize="16sp" />
@@ -129,7 +137,9 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
+            android:src="@drawable/default_profile_image"
+            android:layout_marginTop="5dp"
             android:contentDescription="Avatar" />
+
     </LinearLayout>
 </LinearLayout>
