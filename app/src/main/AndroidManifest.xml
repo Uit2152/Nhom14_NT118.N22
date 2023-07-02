@@ -12,13 +12,34 @@
         android:theme="@style/Theme.DoAn"
         tools:targetApi="31">
         <activity
+            android:name=".SetingACActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangeThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NovelDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListOChapterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CommentActivity"
+            android:exported="false" />
+        <activity
             android:name=".UploadActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AccountActivity"
             android:exported="false" />
         <activity
             android:name=".LibraryActivity"

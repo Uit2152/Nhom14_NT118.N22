@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotActivity extends AppCompatActivity {
 
+
     //View binding
     private ActivityForgotBinding binding;
     //firevase auth

@@ -49,24 +49,24 @@ public class MainActivity extends AppCompatActivity {
 
         //handle btSignUp click, start SignUp screen;
         binding.btSignUp.setOnClickListener(new View.OnClickListener()
-                                             {
-                                                 @Override
-                                                 public void onClick(View v)
-                                                 {
+                                            {
+                                                @Override
+                                                public void onClick(View v)
+                                                {
                                                     startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-                                                 }
-                                             }
+                                                }
+                                            }
         );
 
         //handle btSignIn click, begin login
         binding.btSignIn.setOnClickListener(new View.OnClickListener()
-                                         {
-                                             @Override
-                                             public void onClick(View v)
-                                             {
-                                                 validateData();
-                                             }
-                                         }
+                                            {
+                                                @Override
+                                                public void onClick(View v)
+                                                {
+                                                    validateData();
+                                                }
+                                            }
         );
 
         binding.forgotTV.setOnClickListener(new View.OnClickListener() {

@@ -47,23 +47,23 @@ public class RegisterActivity extends AppCompatActivity {
 
         //handle click backSUp( go-back button)
         binding.backSUp.setOnClickListener(new View.OnClickListener()
-                                                       {
-                                                           @Override
-                                                           public void onClick(View v)
-                                                                        {
-                                                                            onBackPressed();
-                                                                        }
-                                                       }
-        );
-        //handle click btSUp (begin register)
-        binding.btSUp.setOnClickListener(new View.OnClickListener()
                                            {
                                                @Override
                                                public void onClick(View v)
                                                {
-                                                   validateData();
+                                                   onBackPressed();
                                                }
                                            }
+        );
+        //handle click btSUp (begin register)
+        binding.btSUp.setOnClickListener(new View.OnClickListener()
+                                         {
+                                             @Override
+                                             public void onClick(View v)
+                                             {
+                                                 validateData();
+                                             }
+                                         }
         );
     }
 

@@ -31,14 +31,14 @@
             android:gravity="center_horizontal"
             android:textSize="30sp"
             android:text="Thể loại"
-            android:textColor="@color/grey"/>
+            android:textColor="@color/black"/>
     </TableRow>
 
     <HorizontalScrollView
         android:id="@+id/filterHSV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.75"
+        android:layout_weight="0.85"
         android:scrollbarStyle="insideInset"
         android:scrollbarSize="2dp">
 
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_margin="5dp">
+            android:layout_margin="2dp">
 
             <TextView
                 android:id="@+id/c1TV"
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
                 android:text="TIÊN HIỆP"
-                android:textColor="@color/grey"
+                android:textColor="@color/green"
                 android:textSize="25sp" />
 
             <TextView
@@ -64,9 +64,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginEnd="15dp"
-                android:text="HUYỀN HUYỄN"
-                android:textColor="@color/grey"
+                android:layout_marginEnd="25dp"
+                android:text="KIẾM HIỆP"
+                android:textColor="@color/green"
                 android:textSize="25sp" />
 
             <TextView
@@ -74,19 +74,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="25dp"
+                android:text="NGÔN TÌNH"
+                android:textColor="@color/green"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/c4TV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="25dp"
                 android:text="ĐÔ THỊ"
-                android:textColor="@color/grey"
+                android:textColor="@color/green"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/c5TV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="25dp"
+                android:text="TRINH THÁM"
+                android:textColor="@color/green"
                 android:textSize="25sp" />
         </LinearLayout>
     </HorizontalScrollView>
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/categoryRecyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="10"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:listitem="@layout/row_category"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_category"/>
 
 </LinearLayout>

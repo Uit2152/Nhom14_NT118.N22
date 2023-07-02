@@ -1,10 +1,10 @@
 package com.example.doan;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doan.databinding.ActivityHomePageAdminBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +24,13 @@ public class HomePageAdminActivity extends AppCompatActivity {
 
         firebaseAuth= FirebaseAuth.getInstance();
         checkUser();
+
+
+        setupData();
+
+
+
+
 
         binding.logoutBt.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -91,6 +98,38 @@ public class HomePageAdminActivity extends AppCompatActivity {
 
             }
         });
+        binding.xemThem1TV.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, CategoryActivity.class));
+
+            }
+        });
+        binding.xemThem2TV.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, CategoryActivity.class));
+
+            }
+        });
+        binding.contentsearchTV.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, SearchActivity.class));
+
+            }
+        });
+        binding.searchIB.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(HomePageAdminActivity.this, SearchActivity.class));
+
+            }
+        });
     }
 
     private void checkUser()
@@ -106,5 +145,11 @@ public class HomePageAdminActivity extends AppCompatActivity {
             binding.subTitleTv.setText(email);
         }
     }
+
+    private void setupData()
+    {
+
+    }
+
 
 }

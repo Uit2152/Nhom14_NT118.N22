@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NovelDetailsActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/green1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/backBT"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right"/>
+        <TableRow
+            android:id="@+id/info"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/backBT">
+            <ImageView
+                android:id="@+id/imageIV"
+                android:layout_marginTop="-10dp"
+                android:layout_width="85dp"
+                android:layout_height="130dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="2dp"
+                android:contentDescription="Ảnh của truyện" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="top">
+                <TextView
+                    android:id="@+id/Ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Tên truyện :"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tenTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/TacGia"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/Ten"
+                    android:text="Nhập tên truyện"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/TacGia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Ten"
+                    android:text="Tác giả :"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tacgiaTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tenTV"
+                    android:layout_alignLeft="@+id/tenTV"
+                    android:layout_toRightOf="@+id/TacGia"
+                    android:text="Nhập tác giả"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/TheLoai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TacGia"
+                    android:text="Thể loại :"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/theloaiTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tacgiaTV"
+                    android:layout_alignLeft="@+id/tacgiaTV"
+                    android:layout_toRightOf="@+id/TheLoai"
+                    android:text="Nhập thể loại"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/TinhTrang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TheLoai"
+                    android:text="Tình trạng :"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tinhtrangTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/theloaiTV"
+                    android:layout_alignLeft="@+id/theloaiTV"
+                    android:layout_toRightOf="@+id/TinhTrang"
+                    android:text="Nhập tình trạng"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/SoChuong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TinhTrang"
+                    android:text="Số chương :"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/sochuongTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tinhtrangTV"
+                    android:layout_alignLeft="@+id/tinhtrangTV"
+                    android:layout_toRightOf="@+id/SoChuong"
+                    android:text="Nhập tổng số chương"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+        </TableRow>
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/bookmark"
+            android:background="@android:color/transparent"
+            android:contentDescription="Đánh dấu truyện"/>
+    </RelativeLayout>
+
+
+    <TableRow
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/boder">
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/likeCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:contentDescription="Số lượng yêu thích"/>/>
+
+            <ImageButton
+                android:id="@+id/likeIB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="searchButton"
+                android:src="@drawable/like"
+                android:background="@android:color/transparent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Yêu thích"/>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/chatCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:contentDescription="Số lượng bình luận" />
+
+            <ImageButton
+                android:id="@+id/chatIB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="searchButton"
+                android:src="@drawable/chat"
+                android:background="@android:color/transparent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Bình luận"/>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/exclusiveCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:contentDescription="Số lượng đề cử" />
+
+            <ImageButton
+                android:id="@+id/exclusiveIB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="searchButton"
+                android:src="@drawable/exclusive"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Đề cử" />
+        </TableLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_gravity="bottom"
+        android:background="@drawable/boder">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:background="@android:color/transparent"
+            android:gravity="bottom|center"
+            android:textColor="@color/black"
+            android:text="Giới thiệu" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:background="@android:color/transparent"
+            android:gravity="bottom|center"
+            android:text="Danh sách chương"
+            android:textColor="@color/black"/>
+    </TableRow>
+
+
+    <TextView
+        android:id="@+id/summaryTV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        android:hint="Giới thiệu nội dung"
+        android:visibility="visible"
+        android:background="@drawable/boder"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvchapter"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_margin="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_chapter"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/readBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:layout_gravity="center"
+        android:layout_below="@id/summaryTV"
+        android:layout_alignParentBottom="true"
+        android:text="Đọc truyện" />
+
+
+</LinearLayout>

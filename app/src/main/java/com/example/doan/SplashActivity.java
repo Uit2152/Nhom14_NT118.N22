@@ -32,11 +32,11 @@ public class SplashActivity extends AppCompatActivity
 
         //start main screen after 2s
         new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                checkUser();
-            }
-        }, 2000 //2000 means 2seconds
+                                      @Override
+                                      public void run() {
+                                          checkUser();
+                                      }
+                                  }, 2000 //2000 means 2seconds
         );
     }
 
