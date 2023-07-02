@@ -1,15 +1,16 @@
 package com.example.doan;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doan.databinding.ActivityUploadNextBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -82,11 +83,12 @@ public class UploadNextActivity extends AppCompatActivity{
         nxtImage=findViewById(R.id.nxtImage);
 
         Bundle bundle=getIntent().getExtras();
-        if (bundle!= null){
+        if (bundle != null) {
             nxttentruyen.setText(bundle.getString("Tên truyện"));
             nxttacgia.setText(bundle.getString("Tác giả"));
             nxttinhtrang.setText(bundle.getString("Tình trạng"));
-            //nxtsochuong.setText(bundle.getInt("Số chương"));
+            String chapterNumbers = String.valueOf(bundle.getInt("Số chương"));
+            nxtsochuong.setText(chapterNumbers);
         }
 
         //handle click backSUp( go-back button)

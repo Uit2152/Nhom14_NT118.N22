@@ -8,6 +8,9 @@ public class Chapter {
     private String tenC;
     private String timestamp;
 
+    public Chapter() {
+        // Constructor mặc định không tham số
+    }
     public Chapter(int maC, String ND, String tenC) {
         MaC = maC;
         this.ND = ND;
