@@ -44,11 +44,11 @@
 
     </TableRow>
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfView"
+    <TextView
+        android:id="@+id/readTV"
+        android:layout_below="@id/toolbar1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar1" />
+        android:layout_height="match_parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"

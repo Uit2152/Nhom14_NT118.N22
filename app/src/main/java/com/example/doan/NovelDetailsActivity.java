@@ -22,6 +22,8 @@ public class NovelDetailsActivity extends AppCompatActivity {
     Context context = NovelDetailsActivity.this;
     private String novelTitle;
     private int novelID;
+    DocTruyen docTruyen;
+    Users User;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,8 @@ public class NovelDetailsActivity extends AppCompatActivity {
 
         loadNovelDetails();
 
+        User=MyApplication.getUser();
+        docTruyen= new DocTruyen(User.getUid(),novelID,0,0,0,0,0,System.currentTimeMillis());
         binding.backBT.setOnClickListener(new View.OnClickListener()
                                           {
                                               @Override
@@ -46,13 +50,43 @@ public class NovelDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                docTruyen.setChuongDD(1);
                 Intent intent1 = new Intent(NovelDetailsActivity.this, ReadActivity.class);
-                intent1.putExtra("novelID",novelID);
+                intent1.putExtra("story_id",novelID );
                 intent1.putExtra("chapterID",1);
                 startActivity(intent1);
 
             }
         });
+        binding.likeIB.setOnClickListener(new View.OnClickListener()
+                                          {
+                                              @Override
+                                              public void onClick(View view)
+                                              {
+                                                  docTruyen.setYT(1);
+                                              }
+                                          }
+        );
+        binding.chatIB.setOnClickListener(new View.OnClickListener()
+                                          {
+                                              @Override
+                                              public void onClick(View view)
+                                              {
+                                                  docTruyen.setDG(1);
+                                              }
+                                          }
+        );
+        binding.exclusiveIB.setOnClickListener(new View.OnClickListener()
+                                          {
+                                              @Override
+                                              public void onClick(View view)
+                                              {
+                                                  docTruyen.setDC(1);
+                                              }
+                                          }
+        );
+
+
     }
     private void loadNovelDetails(){
         if (novelID == 0) {

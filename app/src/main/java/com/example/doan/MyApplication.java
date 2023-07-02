@@ -5,6 +5,7 @@ import android.text.format.DateFormat;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +17,37 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class MyApplication extends Application {
+
+    public static final Users getUser() {
+        Users User= new Users();
+        FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
+        String userID=firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.orderByChild("uid").equalTo(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot novelSnapshot : snapshot.getChildren()) {
+
+                        User.setEmail("" + novelSnapshot.child("email").getValue());
+                        User.setUid("" + novelSnapshot.child("uid").getValue());
+                        User.setName("" + novelSnapshot.child("name").getValue());
+                        User.setProfileImage("" + novelSnapshot.child("profileImage").getValue());
+                        User.setUserType("" + novelSnapshot.child("userType").getValue());
+                        User.setTimestamp( (Long)novelSnapshot.child("timestamp").getValue());
+                    }
+                } else {
+                    // handle not found
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return User;
+    }
 
     @Override
     public void onCreate() {
@@ -55,4 +87,6 @@ public class MyApplication extends Application {
             }
         });
     }
+
+
 }

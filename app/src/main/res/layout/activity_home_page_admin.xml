@@ -169,11 +169,11 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/truyenMoiCapNhap"
+                    android:id="@+id/truyenNoiBat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="Truyện mới cập nhập"
+                    android:text="Truyện nổi bật"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -189,13 +189,13 @@
             </TableRow>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/likeNovelRV"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="6"
+                android:contentDescription="truyện mới cập nhập"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/row_homepage"
-                android:contentDescription="truyện mới cập nhập">
-            </androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/row_homepage"></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
         <LinearLayout
@@ -214,11 +214,11 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/truyendangdoc"
+                    android:id="@+id/truyenDaHoan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="Truyện đang đọc"
+                    android:text="Truyện đã hoàn"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -234,6 +234,7 @@
             </TableRow>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/completeNovelRV"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4"

@@ -39,10 +39,10 @@ public class ReadActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        novelID = intent.getIntExtra("story_id",1);
+        novelID= intent.getIntExtra("story_id", 1);
         chapterID= intent.getIntExtra("chapterID",1);
-        // chapterID = intent.getStringExtra("chapterID");
-        loadPdfBookDetails(chapterID);
+
+        loadNovelDetails( chapterID);
        // MyApplication.incrementBookCount(novelID);
 
         binding.backBT.setOnClickListener(new View.OnClickListener()
@@ -75,7 +75,7 @@ public class ReadActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //chuyền sang chương liền trước
-
+                loadNovelDetails( chapterID-1);
             }
         });
         binding.nextIB.setOnClickListener(new View.OnClickListener(){
@@ -83,61 +83,46 @@ public class ReadActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 //chuyển sang chương tiếp theo
-//call loadPdfBookDetails(chapter)
+                loadNovelDetails( chapterID+1);
+
             }
         });
     }
 
-    private void loadPdfBookDetails(int chapterId) {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Truyen");
-
-//ref.chiled(novelID).child(chapterID).addListenerForSingleValueEvent....
-        ref.child(getString(novelID)).addListenerForSingleValueEvent(new ValueEventListener() {
+    public static int MAX_BYTES_PDF = 50000000; // Here Max Size PDF 50MB
+    private void loadNovelDetails(int chuongtruyen){
+        if (novelID == 0) {
+            // handle null novelID
+            return;
+        }
+        DatabaseReference refNovel = FirebaseDatabase.getInstance().getReference("ChuongTruyen");
+        refNovel.orderByChild("MaC").equalTo(chuongtruyen).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //get data from firebase
+                if (snapshot.exists()) {
+                    for (DataSnapshot novelSnapshot : snapshot.getChildren()) {
 
-                String pdfUrl = "" + snapshot.child("url").getValue();
-                loadBookFromUrl(pdfUrl);
+                        String noidung = "" + novelSnapshot.child("ND").getValue();
+                        String tenC = "" + novelSnapshot.child("tenC").getValue();
+
+                        //set data
+                        binding.chapternameTV.setText(tenC);
+                        binding.readTV.setText(noidung);
+
+                    }
+                } else {
+                    // handle not found
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // handle error
             }
         });
-    }
-    public static int MAX_BYTES_PDF = 50000000; // Here Max Size PDF 50MB
-    private void loadBookFromUrl(String pdfUrl) {
-        StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl);
-        reference.getBytes(MAX_BYTES_PDF).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                binding.pdfView.fromBytes(bytes).swipeHorizontal(false).onPageChange(new OnPageChangeListener() {
-                    @Override
-                    public void onPageChanged(int page, int pageCount) {
-
-                    }
-                }).onError(new OnErrorListener() {
-                    @Override
-                    public void onError(Throwable t) {
-                        Toast.makeText(ReadActivity.this, "" + t.getMessage(),  Toast.LENGTH_SHORT ).show();
-                    }
-                }).onPageError(new OnPageErrorListener() {
-                    @Override
-                    public void onPageError(int page, Throwable t) {
-                        Toast.makeText(ReadActivity.this, "Error on page "+page + t.getMessage(),  Toast.LENGTH_SHORT ).show();
-                    }
-                }).load();
-
-                binding.progressBar.setVisibility(View.GONE);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                binding.progressBar.setVisibility(View.GONE);
-            }
-        });
+        binding.progressBar.setVisibility(View.GONE);
     }
 
 }
