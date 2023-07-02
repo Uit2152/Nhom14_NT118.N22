@@ -42,13 +42,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.recCard.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1= new Intent(context, UploadNextActivity.class);
-                intent1.putExtra ("Tên truyện",storyList.get(holder.getAdapterPosition()).gettenTV());
-                intent1.putExtra ("Tác giả",storyList.get(holder.getAdapterPosition()).gettacgiaTV());
-                intent1.putExtra ("Tình trạng",storyList.get(holder.getAdapterPosition()).gettinhtrangTV());
-                intent1.putExtra ("Số chương",storyList.get(holder.getAdapterPosition()).getsochuongTV());
+                Intent intent= new Intent(context, UploadNextActivity.class);
+                intent.putExtra ("Tên truyện",storyList.get(holder.getAdapterPosition()).gettenTV());
+                intent.putExtra ("Tác giả",storyList.get(holder.getAdapterPosition()).gettacgiaTV());
+                intent.putExtra ("Tình trạng",storyList.get(holder.getAdapterPosition()).gettinhtrangTV());
+                intent.putExtra ("Số chương",storyList.get(holder.getAdapterPosition()).getsochuongTV());
 
-                context.startActivity(intent1);
+                context.startActivity(intent);
             }
         }));
     }

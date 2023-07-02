@@ -74,6 +74,17 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".UploadNewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UploadNextActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UploadChapterActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
