@@ -23,7 +23,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
     private ActivityNoveldetailsBinding binding;
     Context context = NovelDetailsActivity.this;
     private String novelTitle;
-    private long novelID;
+    private int novelID;
     DocTruyen docTruyen;
     Users User;
     @Override
@@ -33,7 +33,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        novelID= intent.getLongExtra("story_id", 1);
+        novelID= intent.getIntExtra("story_id", 1);
 
         loadNovelDetails();
 
