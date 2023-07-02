@@ -11,7 +11,7 @@
         android:id="@+id/headTableRow"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_weight="0.75"
+        android:layout_weight="0"
         android:background="@drawable/boder">
 
         <ImageButton
@@ -158,11 +158,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChap"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_list_chapter" />
-
 
     <ImageView
         android:id="@+id/btnAdd"

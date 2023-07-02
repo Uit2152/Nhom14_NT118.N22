@@ -63,11 +63,11 @@ public class UploadChapterActivity extends AppCompatActivity{
     private void saveData() {
 
 
-        int ttchuong= Integer.parseInt(txtTTChuong.getText().toString());
-        String tenchuong=txttenChuong.getText().toString();
-        String noidung=txtnoiDung.getText().toString();
+        int MaC= Integer.parseInt(txtTTChuong.getText().toString());
+        String tenC=txttenChuong.getText().toString();
+        String ND=txtnoiDung.getText().toString();
 
-        Chapter chuong= new Chapter(ttchuong, tenchuong, noidung);
+        Chapter chuong= new Chapter(MaC, tenC, ND);
 
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 

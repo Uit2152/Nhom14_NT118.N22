@@ -78,14 +78,14 @@ public class UploadNewActivity extends AppCompatActivity {
         Random random = new Random();
         int storyId = random.nextInt(100);
 
-        int maT=storyId;
-        String tentruyen= txttenTruyen.getText().toString();
-        String tacgia=txttacGia.getText().toString();
+        int MaT=storyId;
+        String tenTV= txttenTruyen.getText().toString();
+        String tacgiaTV=txttacGia.getText().toString();
         int maTL= Integer.parseInt(txtmaTL.getText().toString());
-        int sochuong= Integer.parseInt(txtsoChuong.getText().toString());
-        String mota=txtmoTa.getText().toString();
+        int sochuongTV= Integer.parseInt(txtsoChuong.getText().toString());
+        String Mota=txtmoTa.getText().toString();
 
-        Story truyen= new Story(maT, tentruyen, tacgia,maTL, sochuong, mota);
+        Story truyen= new Story(MaT, tenTV, tacgiaTV,maTL, sochuongTV, Mota);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Truyen");
         DatabaseReference storyRef = databaseReference.push(); // Tạo một child node mới với storyId tự động tăng

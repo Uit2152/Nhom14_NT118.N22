@@ -56,13 +56,15 @@ public class UploadNextActivity extends AppCompatActivity{
         databaseReference= FirebaseDatabase.getInstance().getReference("ChuongTruyen");
         dialog.show();
 
+        Story story=new Story();
         eventListener=databaseReference.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chapList.clear();
                 for(DataSnapshot itemSnapshot: snapshot.getChildren()){
                     Chapter chuong= itemSnapshot.getValue(Chapter.class);
-                    chapList.add(chuong);
+                    if(chuong.getMaT()== story.getMaT()){
+                    chapList.add(chuong);}
                 }
                 adapter.notifyDataSetChanged();
                 dialog.dismiss();
