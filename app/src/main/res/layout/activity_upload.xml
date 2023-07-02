@@ -46,12 +46,13 @@ android:orientation="vertical">
     </TableRow>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/DTRecyclerView"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
+
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_category"/>
+        tools:listitem="@layout/recycler_item"/>
 
     <ImageButton
         android:id="@+id/addBT"

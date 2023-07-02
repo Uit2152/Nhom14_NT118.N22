@@ -1,29 +1,39 @@
 package com.example.doan;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.doan.databinding.ActivityUploadNewBinding;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Random;
+
 
 public class UploadNewActivity extends AppCompatActivity {
     private ActivityUploadNewBinding binding;
@@ -31,14 +41,20 @@ public class UploadNewActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
 
+    EditText txttenTruyen, txttacGia, txtsoChuong, txtmoTa, txtmaTL;
+    ImageButton btnSave;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityUploadNewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //init firebase auth
-        firebaseAuth=FirebaseAuth.getInstance();
+        txttenTruyen= findViewById(R.id.txttenTruyen);
+        txttacGia= findViewById(R.id.txttacGia);
+        txtmaTL=findViewById(R.id.txtmaTL);
+        txtsoChuong= findViewById(R.id.txtsoChuong);
+        txtmoTa= findViewById(R.id.txtmoTa);
+        btnSave= findViewById(R.id.btnSave);
 
         //handle click backSUp( go-back button)
         binding.backBT1.setOnClickListener(new View.OnClickListener() {
@@ -50,84 +66,50 @@ public class UploadNewActivity extends AppCompatActivity {
         );
 
         //handle click save
-        binding.btnSave.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateData();
+                saveData();
             }
         });
     }
 
-    private String tenTV = "", tacgiaTV = "", Mota = "";
-    private int sochuongTV;
-    private boolean isSoChuongEmpty = false;
+    private void saveData() {
+        Random random = new Random();
+        int storyId = random.nextInt(100);
 
-    private void validateData() {
+        int maT=storyId;
+        String tentruyen= txttenTruyen.getText().toString();
+        String tacgia=txttacGia.getText().toString();
+        int maTL= Integer.parseInt(txtmaTL.getText().toString());
+        int sochuong= Integer.parseInt(txtsoChuong.getText().toString());
+        String mota=txtmoTa.getText().toString();
 
-        //get data
-        tenTV = binding.txttenTruyen.getText().toString().trim();
-        tacgiaTV = binding.txttacGia.getText().toString().trim();
-        try {
-            sochuongTV = Integer.parseInt(binding.txtsoChuong.getText().toString().trim());
-        } catch (NumberFormatException e){
-            isSoChuongEmpty=true;
-        }
-        Mota = binding.txtmoTa.getText().toString().trim();
+        Story truyen= new Story(maT, tentruyen, tacgia,maTL, sochuong, mota);
 
-        //Validate data
-        if(TextUtils.isEmpty(tenTV)){
-            Toast.makeText(this, "Nhập tên truyện", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(tacgiaTV)){
-            Toast.makeText(this, "Nhập tác giả", Toast.LENGTH_SHORT).show();
-        }
-        else if(isSoChuongEmpty){
-            Toast.makeText(this, "Nhập số chương", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(Mota)){
-            Toast.makeText(this, "Nhập giới thiệu", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            saveStorage();
-        }
-    }
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Truyen");
+        DatabaseReference storyRef = databaseReference.push(); // Tạo một child node mới với storyId tự động tăng
 
-    private void saveStorage() {
-        long timestamp = System.currentTimeMillis();
+        //String storyId = storyRef.getKey();
 
-        String uid= firebaseAuth.getUid();
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Truyen");
-        int MaT= databaseRef.push().hashCode();
-        // Tạo đối tượng Truyen với các giá trị từ các trường nhập liệu
-        HashMap<String, Object> hashMap= new HashMap<>();
-        hashMap.put("uid",""+uid);
-        hashMap.put("MaT", ""+MaT);
-        hashMap.put("tenTV",""+tenTV);
-        hashMap.put("tacgiaTV",""+tacgiaTV);
-        hashMap.put("sochuongTV",""+sochuongTV);
-        hashMap.put("Mota", ""+Mota);
-        hashMap.put("timestamp",timestamp);
 
-        //Story truyen = new Story(tenTV, tacgiaTV, sochuongTV, Mota);
 
-        databaseReference.child(""+timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+        //String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+        FirebaseDatabase.getInstance().getReference("Truyen").child(String.valueOf(storyId)).setValue(truyen)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        // Truyện đã được lưu thành công vào Firebase Realtime Database
-                        progressDialog.dismiss();
-                        Toast.makeText(UploadNewActivity.this, "Truyện đã được đăng thành công", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(UploadNewActivity.this, UploadActivity.class));
-                        finish();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(UploadNewActivity.this, "Save successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(Exception e) {
-                        // Xử lý khi lưu truyện thất bại
-                        progressDialog.dismiss();
-                        Toast.makeText(UploadNewActivity.this, "Lỗi khi đăng truyện: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UploadNewActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 }
