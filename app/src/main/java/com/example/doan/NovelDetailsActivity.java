@@ -17,11 +17,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.function.IntToLongFunction;
+
 public class NovelDetailsActivity extends AppCompatActivity {
     private ActivityNoveldetailsBinding binding;
     Context context = NovelDetailsActivity.this;
     private String novelTitle;
-    private int novelID;
+    private long novelID;
     DocTruyen docTruyen;
     Users User;
     @Override
@@ -31,12 +33,12 @@ public class NovelDetailsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        novelID= intent.getIntExtra("story_id", 1);
+        novelID= intent.getLongExtra("story_id", 1);
 
         loadNovelDetails();
 
         User=MyApplication.getUser();
-        docTruyen= new DocTruyen(User.getUid(),novelID,0,0,0,0,0,System.currentTimeMillis());
+        docTruyen= new DocTruyen(User.getUid(), (int)novelID,0,0,0,0,0,System.currentTimeMillis());
         binding.backBT.setOnClickListener(new View.OnClickListener()
                                           {
                                               @Override

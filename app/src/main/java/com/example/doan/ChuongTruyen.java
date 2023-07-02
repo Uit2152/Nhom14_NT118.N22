@@ -9,6 +9,15 @@ public class ChuongTruyen {
     private String tenC;
     private Timestamp timestamp;
 
+    public ChuongTruyen() {
+        // Constructor mặc định không tham số
+    }
+    public ChuongTruyen(int maC, String ND, String tenC) {
+        MaC = maC;
+        this.ND = ND;
+        this.tenC = tenC;
+    }
+
     public int getMaT() {
         return MaT;
     }

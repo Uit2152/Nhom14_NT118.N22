@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TableRow
+        android:id="@+id/headTableRow"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_weight="0"
+        android:background="@drawable/boder">
+
+        <ImageButton
+            android:id="@+id/backBT1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/pageDT"
+            android:layout_width="314dp"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:text="Đăng truyện"
+            android:textColor="@color/grey"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/save" />
+
+    </TableRow>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="60dp"
+            android:layout_height="150dp"
+            android:id="@+id/nxtImage"
+            android:layout_marginStart="5dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:id="@+id/text1"
+            android:textSize="20sp"
+            android:layout_toEndOf="@id/nxtImage"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Tên truyện:"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/nxttentruyen"
+            android:textSize="20sp"
+            android:layout_toEndOf="@id/text1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Tên truyện"/>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:id="@+id/text2"
+            android:textSize="20sp"
+            android:layout_toEndOf="@id/nxtImage"
+            android:layout_below="@id/text1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Tác giả:"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/nxttacgia"
+            android:textSize="20sp"
+            android:layout_below="@id/nxttentruyen"
+            android:layout_toEndOf="@id/text2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Tác giả"/>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:id="@+id/text3"
+            android:textSize="20sp"
+            android:layout_toEndOf="@id/nxtImage"
+            android:layout_below="@id/text2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Tình trạng:"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/nxttinhtrang"
+            android:textSize="20sp"
+            android:layout_below="@id/nxttacgia"
+            android:layout_toEndOf="@id/text2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Tình trạng"/>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:id="@+id/text4"
+            android:textSize="20sp"
+            android:layout_toEndOf="@id/nxtImage"
+            android:layout_below="@id/text3"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Số chương:"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:id="@+id/nxtsochuong"
+            android:textSize="20sp"
+            android:layout_below="@id/nxttinhtrang"
+            android:layout_toEndOf="@id/text2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Số chương"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/DSChuong"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Danh sách chương"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerChap"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_list_chapter" />
+
+    <ImageView
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/add" />
+
+</LinearLayout>

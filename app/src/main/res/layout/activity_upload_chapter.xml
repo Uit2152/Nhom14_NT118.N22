@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadChapterActivity">
+
+
+    <TableRow
+        android:id="@+id/headTableRow"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_weight="0.75"
+        android:background="@drawable/boder">
+
+        <ImageButton
+            android:id="@+id/backBT1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right" />
+
+        <TextView
+            android:id="@+id/pageDT"
+            android:layout_width="314dp"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:text="Đăng truyện"
+            android:textColor="@color/grey"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/btnSave1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/save" />
+
+    </TableRow>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ttChuong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headTableRow"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="5dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/txtTTChuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập chương"
+            android:background="@color/cardview_light_background"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tenchuong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@id/ttChuong"
+        android:layout_marginTop="5dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/txttenChuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên chương"
+            android:background="@color/cardview_light_background"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/noidung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@id/tenchuong"
+        android:layout_marginTop="5dp"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/txtnoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập nội dung"
+            android:background="@color/cardview_light_background"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>

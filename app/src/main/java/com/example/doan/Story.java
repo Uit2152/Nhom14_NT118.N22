@@ -28,6 +28,14 @@ public class Story {
         this.image=image;
         this.uid=uid;
     }
+    public Story(int maT,String tenTV, String tacgiaTV,int maTL, int sochuongTV, String mota) {
+        this.MaT=maT;
+        this.tenTV=tenTV;
+        this.tacgiaTV=tacgiaTV;
+        this.maTL=maTL;
+        this.sochuongTV=sochuongTV;
+        this.Mota=mota;
+    }
 
     public int getMaT() {
         return MaT;
