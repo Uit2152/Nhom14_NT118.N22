@@ -3,10 +3,13 @@ package com.example.doan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -41,6 +44,15 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.MyViewHold
 
                 int sochuong = story.getsochuongTV();
                 holder.sochuongTV.setText(String.valueOf(sochuong));
+                String imageUrl = story.getImage();
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Glide.with(holder.itemView.getContext())
+                            .load(imageUrl)
+                            .placeholder(R.drawable.default_image)
+                            .into(holder.image);
+                } else {
+                    holder.image.setImageResource(R.drawable.default_image);
+                }
             }
         }
 
@@ -51,6 +63,7 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.MyViewHold
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
             TextView tenTV, tacgiaTV, tinhtrangTV, sochuongTV;
+            ImageButton image;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -58,6 +71,8 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.MyViewHold
                 tacgiaTV = itemView.findViewById(R.id.tacgiaTV);
                 tinhtrangTV = itemView.findViewById(R.id.tinhtrangTV);
                 sochuongTV = itemView.findViewById(R.id.sochuongTV);
+                image = itemView.findViewById(R.id.image);
+
             }
         }
     }
