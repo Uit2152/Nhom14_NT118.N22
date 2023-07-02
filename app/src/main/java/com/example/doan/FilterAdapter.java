@@ -58,7 +58,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.MyViewHold
                 @Override
                 public void onClick(View v) {
                     // Truyền dữ liệu về truyện qua intent
-                    Intent intent = new Intent(v.getContext(), ReadActivity.class);
+                    Intent intent = new Intent(v.getContext(), NovelDetailsActivity.class);
                     intent.putExtra("story_id", story.getMaT()); // ví dụ truyền ID của truyện
                     v.getContext().startActivity(intent);
                 }
