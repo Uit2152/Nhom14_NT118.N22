@@ -1,5 +1,6 @@
 package com.example.doan;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,16 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.MyViewHold
             } else {
                 holder.image.setImageResource(R.drawable.default_image);
             }
+
+            holder.image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Truyền dữ liệu về truyện qua intent
+                    Intent intent = new Intent(v.getContext(), NovelDetailsActivity.class);
+                    intent.putExtra("story_id", story.getMaT()); // ví dụ truyền ID của truyện
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 
