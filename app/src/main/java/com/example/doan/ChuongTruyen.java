@@ -3,39 +3,39 @@ package com.example.doan;
 import java.security.Timestamp;
 
 public class ChuongTruyen {
-    private int MaT;
-    private int MaC;
+    private int maT;
+    private int maC;
     private String ND;
     private String tenC;
-    private Timestamp timestamp;
+    private String timestamp;
 
     public ChuongTruyen() {
         // Constructor mặc định không tham số
     }
     public ChuongTruyen(int maC, String ND, String tenC) {
-        MaC = maC;
+        this.maC = maC;
         this.ND = ND;
         this.tenC = tenC;
     }
 
     public int getMaT() {
-        return MaT;
+        return this.maT;
     }
 
     public void setMaT(int maT) {
-        MaT = maT;
+        this.maT = maT;
     }
 
     public int getMaC() {
-        return MaC;
+        return this.maC;
     }
 
     public void setMaC(int maC) {
-        MaC = maC;
+        this.maC = maC;
     }
 
     public String getND() {
-        return ND;
+        return this.ND;
     }
 
     public void setND(String ND) {
@@ -43,18 +43,18 @@ public class ChuongTruyen {
     }
 
     public String getTenC() {
-        return tenC;
+        return this.tenC;
     }
 
     public void setTenC(String tenC) {
         this.tenC = tenC;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public String getTimestamp() {
+        return this.timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 }

@@ -8,11 +8,11 @@ public class DocTruyen {
 private int YT;
     private int DG;
     private int chuongDD;
-    private long timestamp;
+    private String timestamp;
 
     public DocTruyen() {}
 
-    public DocTruyen(String uid, int maT, int DC, int DD, int YT, int DG, int chuongDD, long timestamp) {
+    public DocTruyen(String uid, int maT, int DC, int DD, int YT, int DG, int chuongDD, String timestamp) {
         this.uid = uid;
         this.MaT = maT;
         this.DC = DC;
@@ -79,11 +79,11 @@ private int YT;
         this.chuongDD = chuongDD;
     }
 
-    public long getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 }

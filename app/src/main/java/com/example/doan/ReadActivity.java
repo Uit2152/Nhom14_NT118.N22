@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.Toast;
 
 
@@ -97,19 +98,24 @@ public class ReadActivity extends AppCompatActivity {
             return;
         }
         DatabaseReference refNovel = FirebaseDatabase.getInstance().getReference("ChuongTruyen");
-        refNovel.orderByChild("MaC").equalTo(chuongtruyen).addValueEventListener(new ValueEventListener() {
+        refNovel.orderByChild("maC").equalTo(chuongtruyen).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //get data from firebase
                 if (snapshot.exists()) {
+
                     for (DataSnapshot novelSnapshot : snapshot.getChildren()) {
+                        ChuongTruyen chuong= novelSnapshot.getValue(ChuongTruyen.class);
+                        assert chuong != null;
+                        if( chuong.getMaT()== novelID ) {
+                            String noidung = "" + novelSnapshot.child("ND").getValue();
+                            String tenC = "" + novelSnapshot.child("tenC").getValue();
 
-                        String noidung = "" + novelSnapshot.child("ND").getValue();
-                        String tenC = "" + novelSnapshot.child("tenC").getValue();
-
-                        //set data
-                        binding.chapternameTV.setText(tenC);
-                        binding.readTV.setText(noidung);
+                            //set data
+                            binding.chapternameTV.setText(tenC);
+                            binding.readTV.setText(noidung);
+                            break;
+                        }
 
                     }
                 } else {

@@ -70,14 +70,7 @@
                 android:hint="Search"
                 android:inputType="text" />
 
-            <ImageButton
-                android:id="@+id/uploadIB"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:contentDescription="upload-Button: trang đăng truyện"
-                android:src="@drawable/pen" />
+
 
             <ImageButton
                 android:id="@+id/searchIB"

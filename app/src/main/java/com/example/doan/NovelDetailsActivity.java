@@ -38,7 +38,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
         loadNovelDetails();
 
         User=MyApplication.getUser();
-        docTruyen= new DocTruyen(User.getUid(), (int)novelID,0,0,0,0,0,System.currentTimeMillis());
+        docTruyen= new DocTruyen(User.getUid(), (int)novelID,0,0,0,0,0,String.valueOf(System.currentTimeMillis()));
         binding.backBT.setOnClickListener(new View.OnClickListener()
                                           {
                                               @Override
@@ -54,8 +54,8 @@ public class NovelDetailsActivity extends AppCompatActivity {
             {
                 docTruyen.setChuongDD(1);
                 Intent intent1 = new Intent(NovelDetailsActivity.this, ReadActivity.class);
-                intent1.putExtra("story_id",novelID );
-                intent1.putExtra("chapterID",1);
+                intent1.putExtra("story_id",(int)novelID );
+                intent1.putExtra("chapterID",(int)1);
                 startActivity(intent1);
 
             }
