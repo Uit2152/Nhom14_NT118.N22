@@ -40,8 +40,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:text="Thư viện"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"
+                android:textSize="32sp" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -64,18 +66,26 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
+                android:background="?android:attr/selectableItemBackground"
                 android:text="Lịch sử đọc"
-                android:textColor="@android:color/black" />
+                android:drawableBottom="@drawable/vien"
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/bookmarkBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:text="Truyện đánh dấu"
-                android:textColor="@android:color/black" />
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Đánh dấu"
+                android:drawableBottom="@drawable/vien"
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -93,7 +103,7 @@
                 android:id="@+id/LibraryRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="15"
+                android:layout_weight="5"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:listitem="@layout/row_library" />

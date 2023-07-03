@@ -7,12 +7,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".RewardActivity">
+
     <TableRow
         android:id="@+id/headTableRow"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.75"
+        android:layout_weight="1"
         android:background="@drawable/boder">
+
         <ImageButton
             android:id="@+id/backBT"
             android:layout_width="48dp"
@@ -23,21 +25,25 @@
             android:background="@android:color/transparent"
             android:contentDescription="@android:string/ok"
             android:src="@drawable/arrow_right"/>
+
         <TextView
             android:id="@+id/pageTV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:textSize="30sp"
             android:text="Bảng xếp hạng"
-            android:textColor="@color/black"/>
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="32sp"/>
+
     </TableRow>
 
     <HorizontalScrollView
         android:id="@+id/filterHSV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.85"
+        android:layout_weight="1"
         android:scrollbarStyle="insideInset"
         android:scrollbarSize="2dp">
 
@@ -54,7 +60,10 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
-                android:text=" TOP XEM NHIỀU "
+                android:text="  Top xem nhiều  "
+                android:drawableBottom="@drawable/vien"
+                android:background="@drawable/btn"
+                android:typeface="serif"
                 android:textColor="@color/green"
                 android:textSize="25sp" />
 
@@ -64,7 +73,10 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
-                android:text=" TOP ĐỀ CỬ "
+                android:text="  Top đề cử  "
+                android:typeface="serif"
+                android:drawableBottom="@drawable/vien"
+                android:background="@drawable/btn"
                 android:textColor="@color/green"
                 android:textSize="25sp" />
 
@@ -74,9 +86,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="15dp"
-                android:text=" TOP YÊU THÍCH "
+                android:text="  Top yêu thích  "
+                android:typeface="serif"
                 android:textColor="@color/green"
+                android:drawableBottom="@drawable/vien"
+                android:background="@drawable/btn"
                 android:textSize="25sp" />
+
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -87,4 +103,5 @@
         android:layout_weight="10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_reward"/>
+
 </LinearLayout>

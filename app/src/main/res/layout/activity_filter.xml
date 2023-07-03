@@ -11,7 +11,7 @@
         android:id="@+id/headTableRow"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_weight="0.75"
+        android:layout_weight="1"
         android:background="@drawable/boder">
         <ImageButton
             android:id="@+id/backBT"
@@ -30,23 +30,27 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Lọc truyện"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="32sp"/>
 
         <TextView
             android:id="@+id/Xong"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Xong"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="italic"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:contentDescription="@android:string/ok"/>
+            android:layout_weight="1"
+            android:background="@drawable/btn"
+            android:contentDescription="@android:string/ok"
+            android:drawableBottom="@drawable/vien"
+            android:text=" Xong  "
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:typeface="serif" />
     </TableRow>
 
     <HorizontalScrollView
@@ -65,9 +69,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:text="Tình trạng:"/>
+                android:text="Tình trạng:"
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/green2"
+                android:textSize="20sp"/>
 
             <RadioGroup
                 android:id="@+id/TinhTrang"
@@ -79,20 +85,29 @@
                     android:id="@+id/hoanthanh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hoàn thành" />
+                    android:text="Hoàn thành"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:id="@+id/dangra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đang ra" />
+                    android:text="Đang ra"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
             </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Thể loại:" />
+                android:text="Thể loại:"
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/green2"
+                android:textSize="20sp"/>
 
             <RadioGroup
                 android:id="@+id/TheLoai"
@@ -104,38 +119,56 @@
                     android:id="@+id/TH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiên hiệp" />
+                    android:text="Tiên hiệp"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
                 <RadioButton
                     android:id="@+id/KH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kiếm hiệp" />
+                    android:text="Kiếm hiệp"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:id="@+id/NT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ngôn tình" />
+                    android:text="Ngôn tình"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
 
                 <RadioButton
                     android:id="@+id/DT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đô thị" />
+                    android:text="Đô thị"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:id="@+id/TT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trinh thám" />
+                    android:text="Trinh thám"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
             </RadioGroup>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Số chương:" />
+                android:text="Số chương:"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:textColor="@color/green2"
+                android:textSize="20sp"/>
 
             <RadioGroup
                 android:id="@+id/SoChuong"
@@ -147,25 +180,37 @@
                     android:id="@+id/Duoi100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dưới 100" />
+                    android:text="Dưới 100"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:id="@+id/Duoi500"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100 đến 500" />
+                    android:text="100 - 500"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:id="@+id/Duoi1000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500 đến 1000" />
+                    android:text="500 - 1000"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
 
                 <RadioButton
                     android:id="@+id/Tren1000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trên 1000" />
+                    android:text="Trên 1000"
+                    android:typeface="serif"
+                    android:textColor="@color/green"
+                    android:textSize="15sp"/>
             </RadioGroup>
         </LinearLayout>
     </HorizontalScrollView>
