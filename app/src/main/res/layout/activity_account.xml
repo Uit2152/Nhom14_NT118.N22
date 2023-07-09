@@ -12,7 +12,7 @@
         android:id="@+id/headTableRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.20"
+        android:layout_weight="0"
         android:background="@drawable/boder">
 
         <TextView
@@ -21,8 +21,10 @@
             android:layout_height="50dp"
             android:gravity="center_horizontal"
             android:text="Tài khoản"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="32sp" />
     </TableRow>
 
     <LinearLayout
@@ -30,7 +32,7 @@
         android:layout_height="150dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <!-- User Avatar -->
         <ImageView
@@ -53,7 +55,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Họ và tên"
-                android:textColor="@color/black"
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"
                 android:textSize="20sp" />
 
             <!-- User Email -->
@@ -62,7 +66,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
-                android:textColor="@color/black"
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -72,18 +78,22 @@
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:text="Cài đặt tài khoản"
-        android:textColor="@color/black"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
         android:backgroundTint="@color/white"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/NenVaMauChuButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:text="Thay đổi màu nền"
-        android:textColor="@color/black"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
         android:backgroundTint="@color/white"
         android:textSize="20sp" />
 
@@ -92,9 +102,11 @@
     <Button
         android:id="@+id/ChinhSachButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:text="Chính sách"
-        android:textColor="@color/black"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
         android:backgroundTint="@color/white"
         android:textSize="20sp" />
 
@@ -102,20 +114,23 @@
     <Button
         android:id="@+id/VeChungToiButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:text="Về chúng tôi"
-        android:textColor="@color/black"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
         android:backgroundTint="@color/white"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/EmailGopYButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:text="Email góp ý"
-
         android:backgroundTint="@color/white"
-        android:textColor="@color/black"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
         android:textSize="20sp" />
 
     <Button
@@ -123,16 +138,17 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Đăng xuất"
-
         android:backgroundTint="@color/white"
-        android:textColor="@color/black"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
         android:textSize="20sp"
         />
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7">
+        android:layout_weight="0.6">
         <ImageButton
             android:id="@+id/libraryIB"
             android:layout_width="0dp"

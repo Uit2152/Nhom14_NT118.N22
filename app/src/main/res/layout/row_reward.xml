@@ -26,7 +26,8 @@
                 android:id="@+id/Ten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên truyện :"/>
+                android:text="Tên truyện :"
+                android:typeface="serif"/>
             <TextView
                 android:id="@+id/tenTV"
                 android:layout_width="wrap_content"
@@ -34,14 +35,16 @@
                 android:layout_above="@+id/TacGia"
                 android:layout_toRightOf="@+id/Ten"
                 android:layout_marginLeft="25dp"
-                android:text="Nhập tên truyện" />
+                android:text="Nhập tên truyện"
+                android:typeface="serif"/>
 
             <TextView
                 android:id="@+id/TacGia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Ten"
-                android:text="Tác giả :"/>
+                android:text="Tác giả :"
+                android:typeface="serif"/>
             <TextView
                 android:id="@+id/tacgiaTV"
                 android:layout_width="wrap_content"
@@ -49,14 +52,16 @@
                 android:layout_below="@+id/tenTV"
                 android:layout_toRightOf="@+id/TacGia"
                 android:layout_alignLeft="@+id/tenTV"
-                android:text="Nhập tác giả" />
+                android:text="Nhập tác giả"
+                android:typeface="serif"/>
 
             <TextView
                 android:id="@+id/TinhTrang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TacGia"
-                android:text="Tình trạng :"/>
+                android:text="Tình trạng :"
+                android:typeface="serif"/>
             <TextView
                 android:id="@+id/tinhtrangTV"
                 android:layout_width="wrap_content"
@@ -64,14 +69,16 @@
                 android:layout_below="@+id/tacgiaTV"
                 android:layout_toRightOf="@+id/TinhTrang"
                 android:layout_alignLeft="@+id/tacgiaTV"
-                android:text="Nhập tình trạng" />
+                android:text="Nhập tình trạng"
+                android:typeface="serif"/>
 
             <TextView
                 android:id="@+id/SoChuong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TinhTrang"
-                android:text="Số chương :"/>
+                android:text="Số chương :"
+                android:typeface="serif"/>
             <TextView
                 android:id="@+id/sochuongTV"
                 android:layout_width="wrap_content"
@@ -79,7 +86,8 @@
                 android:layout_below="@+id/tinhtrangTV"
                 android:layout_toRightOf="@+id/SoChuong"
                 android:layout_alignLeft="@+id/tinhtrangTV"
-                android:text="Nhập tác giả" />
+                android:text="Nhập tác giả"
+                android:typeface="serif"/>
 
         </RelativeLayout>
     </LinearLayout>

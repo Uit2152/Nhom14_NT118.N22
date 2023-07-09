@@ -50,16 +50,20 @@ public class RewardActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Truyen");
 
-        myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
+        myRef.orderByChild("Views").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Story> storyList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Story story = snapshot.getValue(Story.class);
-                    storyList.add(story);
-                }
+                    if(story.getViews()>9)
+                    {
+                        storyList.add(story);
+                    }
 
-                displayStoryList(storyList);
+
+                }
+                displayStoryList(recyclerView,storyList);
             }
 
             @Override
@@ -67,7 +71,6 @@ public class RewardActivity extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
-
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,37 +92,29 @@ public class RewardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (storyList != null) {
-                    DatabaseReference docRef = database.getReference("DocTruyen");
-                    docRef.addValueEventListener(new ValueEventListener() {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Truyen");
+
+                    // Lọc danh sách truyện theo thể loại được chọn
+                    myRef.orderByChild("Views").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            List<Story> sortedStoryList = new ArrayList<>();
-                            for (Story story : storyList) {
-                                int views = 0;
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
-                                    if (docTruyen.getMaT() == story.getMaT()) {
-                                        views++;
-                                    }
+                            List<Story> storyList = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                Story story = snapshot.getValue(Story.class);
+                                if(story.getViews()>9)
+                                {
+                                    storyList.add(story);
                                 }
-                                story.setViews(views);
-                                sortedStoryList.add(story);
+
+
                             }
-
-                            Collections.sort(sortedStoryList, new Comparator<Story>() {
-                                @Override
-                                public int compare(Story s1, Story s2) {
-                                    return s2.getViews() - s1.getViews();
-                                }
-                            });
-
-                            RewardAdapter adapter = new RewardAdapter(sortedStoryList);
-                            recyclerView.setAdapter(adapter);
+                            displayStoryList(recyclerView,storyList);
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle error
+                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                         }
                     });
                 }
@@ -213,8 +208,8 @@ public class RewardActivity extends AppCompatActivity {
 
 
     }
-    private void displayStoryList(List<Story> storyList) {
-        RewardAdapter adapter = new RewardAdapter(storyList);
+    private void displayStoryList(RecyclerView recyclerView,List<Story> storyList) {
+        CategoryAdapter adapter = new CategoryAdapter(storyList);
         recyclerView.setAdapter(adapter);
     }
 }
