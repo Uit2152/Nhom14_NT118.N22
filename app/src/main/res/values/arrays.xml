@@ -1,0 +1,12 @@
+<resources>
+    <string-array name="background_color_names">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+    <integer-array name="background_color_values">
+        <item>@color/red</item>
+        <item>@color/green</item>
+        <item>@color/blue1</item>
+    </integer-array>
+</resources>

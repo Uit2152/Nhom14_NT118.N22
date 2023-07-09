@@ -4,23 +4,23 @@ public class DocTruyen {
     private String uid;
     private int MaT;
     private int DC;
-    private int DD;
+    private int maDD;
 private int YT;
     private int DG;
     private int chuongDD;
-    private String timestamp;
+    private String datetime;
 
     public DocTruyen() {}
 
-    public DocTruyen(String uid, int maT, int DC, int DD, int YT, int DG, int chuongDD, String timestamp) {
+    public DocTruyen(String uid, int maT, int DC, int DD, int YT, int DG, int chuongDD, String datetime) {
         this.uid = uid;
         this.MaT = maT;
         this.DC = DC;
-        this.DD = DD;
+        this.maDD = DD;
         this.YT = YT;
         this.DG = DG;
         this.chuongDD = chuongDD;
-        this.timestamp = timestamp;
+        this.datetime = datetime;
     }
 
     public String getUid() {
@@ -47,12 +47,12 @@ private int YT;
         this.DC = DC;
     }
 
-    public int getDD() {
-        return DD;
+    public int getmaDD() {
+        return maDD;
     }
 
-    public void setDD(int DD) {
-        this.DD = DD;
+    public void setmaDD(int DD) {
+        this.maDD = DD;
     }
 
     public int getYT() {
@@ -79,11 +79,11 @@ private int YT;
         this.chuongDD = chuongDD;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setDatetimep(String datetime) {
+        this.datetime = datetime;
     }
 }

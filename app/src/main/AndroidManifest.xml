@@ -14,8 +14,11 @@
         <activity
             android:name=".SetingACActivity"
             android:exported="false" />
+
+        <activity android:name=".MyPreferenceFragment"
+            android:exported="false" />
         <activity
-            android:name=".ChangeThemeActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".AccountActivity"

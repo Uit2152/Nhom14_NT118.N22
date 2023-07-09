@@ -1,29 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ChangeThemeActivity">
+    android:orientation="vertical">
+
     <TextView
+        android:id="@+id/settings_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chọn màu nền"
-        android:textSize="20sp"
+        android:text="Settings"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
-    <Spinner
-        android:id="@+id/backgroundSpinner"
+    <FrameLayout
+        android:id="@+id/settings_container"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:entries="@array/background_colors" />
-
+        android:layout_height="313dp" />
     <Button
-        android:id="@+id/saveButton"
-        android:layout_width="match_parent"
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lưu" />
+        android:text="Save Settings" />
 
 </LinearLayout>
