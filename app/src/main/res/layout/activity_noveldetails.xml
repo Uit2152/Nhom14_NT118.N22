@@ -166,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:contentDescription="Số lượng yêu thích"/>/>
+                android:contentDescription="Số lượng yêu thích"/>
 
             <ImageButton
                 android:id="@+id/likeIB"
@@ -243,6 +243,7 @@
         android:background="@drawable/boder">
 
         <Button
+            android:id="@+id/introduceBt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -253,6 +254,7 @@
             android:text="Giới thiệu" />
 
         <Button
+            android:id="@+id/listchaptersBt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -263,13 +265,13 @@
             android:textColor="@color/black"/>
     </TableRow>
 
-
     <TextView
         android:id="@+id/summaryTV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:layout_margin="10dp"
+        android:scrollbars = "vertical"
         android:hint="Giới thiệu nội dung"
         android:visibility="visible"
         android:background="@drawable/boder"/>
@@ -281,7 +283,7 @@
         android:layout_weight="3"
         android:layout_margin="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_chapter"
+        tools:listitem="@layout/row_list_chapter"
         android:visibility="gone"/>
 
     <Button

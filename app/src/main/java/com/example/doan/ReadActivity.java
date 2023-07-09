@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.ViewDebug;
 import android.widget.Toast;
@@ -59,8 +61,9 @@ public class ReadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(ReadActivity.this, ListOChapterActivity.class));
-
+                Intent intent1 = new Intent(ReadActivity.this, ListOChapterActivity.class);
+                intent1.putExtra("story_id",(int)novelID );
+                startActivity(intent1);
             }
         });
         binding.chatIB.setOnClickListener(new View.OnClickListener(){
@@ -112,7 +115,13 @@ public class ReadActivity extends AppCompatActivity {
                             String tenC = "" + novelSnapshot.child("tenC").getValue();
 
                             //set data
+
+                            binding.chapternameTV.setSingleLine(true);
+                            binding.chapternameTV.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                            binding.chapternameTV.setSelected(true);
                             binding.chapternameTV.setText(tenC);
+
+                            binding.readTV.setMovementMethod(new ScrollingMovementMethod());
                             binding.readTV.setText(noidung);
                             break;
                         }
