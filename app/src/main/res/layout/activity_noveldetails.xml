@@ -44,14 +44,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:gravity="top">
+                android:gravity="top"
+                android:padding="5dp">
                 <TextView
                     android:id="@+id/Ten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:text="Tên truyện :"
-                    android:textSize="25sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/tenTV"
@@ -62,7 +66,10 @@
                     android:layout_marginBottom="5dp"
                     android:layout_toRightOf="@+id/Ten"
                     android:text="Nhập tên truyện"
-                    android:textSize="25sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/TacGia"
@@ -70,7 +77,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/Ten"
                     android:text="Tác giả :"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/tacgiaTV"
@@ -80,14 +89,18 @@
                     android:layout_alignLeft="@+id/tenTV"
                     android:layout_toRightOf="@+id/TacGia"
                     android:text="Nhập tác giả"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
                 <TextView
                     android:id="@+id/TheLoai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/TacGia"
                     android:text="Thể loại :"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/theloaiTV"
@@ -97,7 +110,9 @@
                     android:layout_alignLeft="@+id/tacgiaTV"
                     android:layout_toRightOf="@+id/TheLoai"
                     android:text="Nhập thể loại"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/TinhTrang"
@@ -105,7 +120,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/TheLoai"
                     android:text="Tình trạng :"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/tinhtrangTV"
@@ -115,7 +132,9 @@
                     android:layout_alignLeft="@+id/theloaiTV"
                     android:layout_toRightOf="@+id/TinhTrang"
                     android:text="Nhập tình trạng"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/SoChuong"
@@ -123,7 +142,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/TinhTrang"
                     android:text="Số chương :"
-                    android:textSize="20sp" />
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
                 <TextView
                     android:id="@+id/sochuongTV"
@@ -132,8 +153,10 @@
                     android:layout_below="@+id/tinhtrangTV"
                     android:layout_alignLeft="@+id/tinhtrangTV"
                     android:layout_toRightOf="@+id/SoChuong"
-                    android:text="Nhập tổng số chương"
-                    android:textSize="20sp" />
+                    android:text="Nhập số chương"
+                    android:typeface="serif"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
 
             </RelativeLayout>
 
@@ -155,7 +178,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.2"
         android:background="@drawable/boder">
         <TableLayout
             android:layout_width="0dp"
@@ -172,6 +195,7 @@
                 android:id="@+id/likeIB"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:contentDescription="searchButton"
                 android:src="@drawable/like"
                 android:background="@android:color/transparent" />
@@ -179,7 +203,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Yêu thích"/>
+                android:text="Yêu thích"
+                android:typeface="serif"/>
         </TableLayout>
 
         <TableLayout
@@ -205,7 +230,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Bình luận"/>
+                android:text="Bình luận"
+                android:typeface="serif"/>
         </TableLayout>
         <TableLayout
             android:layout_width="0dp"
@@ -231,7 +257,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Đề cử" />
+                android:text="Đề cử"
+                android:typeface="serif"/>
         </TableLayout>
     </TableRow>
 
@@ -250,8 +277,10 @@
 
             android:background="@android:color/transparent"
             android:gravity="bottom|center"
-            android:textColor="@color/black"
-            android:text="Giới thiệu" />
+            android:textColor="@color/teal_700"
+            android:text="Giới thiệu"
+            android:textStyle="bold"
+            android:typeface="serif"/>
 
         <Button
             android:id="@+id/listchaptersBt"
@@ -262,7 +291,10 @@
             android:background="@android:color/transparent"
             android:gravity="bottom|center"
             android:text="Danh sách chương"
-            android:textColor="@color/black"/>
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="13.9sp"
+            android:textColor="@color/teal_700"/>
     </TableRow>
 
     <TextView
@@ -273,6 +305,7 @@
         android:layout_margin="10dp"
         android:scrollbars = "vertical"
         android:hint="Giới thiệu nội dung"
+        android:typeface="serif"
         android:visibility="visible"
         android:background="@drawable/boder"/>
 
@@ -282,6 +315,7 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:layout_margin="10dp"
+        android:typeface="serif"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_list_chapter"
         android:visibility="gone"/>
@@ -294,6 +328,8 @@
         android:layout_gravity="center"
         android:layout_below="@id/summaryTV"
         android:layout_alignParentBottom="true"
+        android:typeface="serif"
+        android:textStyle="bold"
         android:text="Đọc truyện" />
 
 

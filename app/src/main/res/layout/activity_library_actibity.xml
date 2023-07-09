@@ -69,6 +69,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Lịch sử đọc"
                 android:drawableBottom="@drawable/vien"
+                android:backgroundTint="@color/teal_700"
                 android:typeface="serif"
                 android:textStyle="bold"
                 android:textColor="@color/green"

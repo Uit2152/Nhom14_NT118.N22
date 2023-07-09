@@ -12,6 +12,9 @@ public class Story {
     private String image;
     private String uid;
     private int Views;
+    private int DeCu;
+    private int Likes;
+
 
     public Story() {
     }
@@ -121,5 +124,23 @@ public class Story {
     }
 
     public int getViews() { return Views;
+    }
+
+
+
+    public void setDeCu(int deCu) {
+        DeCu = deCu;
+    }
+
+    public int getDeCu() {
+        return DeCu;
+    }
+
+    public int getLikes() {
+        return Likes;
+    }
+
+    public void setLikes(int likes) {
+        Likes = likes;
     }
 }
