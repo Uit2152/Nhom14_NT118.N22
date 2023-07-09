@@ -58,6 +58,23 @@ public class LibraryActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         // Tạo kết nối tới Firebase và lấy dữ liệu truyện theo yêu cầu
         DatabaseReference myRef = database.getReference("Truyen");
+        myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Story story = snapshot.getValue(Story.class);
+                    storyList.add(story);
+                }
+
+                displayStoryList(storyList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+
         DatabaseReference docRef = database.getReference("DocTruyen");
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -88,22 +105,7 @@ public class LibraryActivity extends AppCompatActivity {
 
 
 
-        myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Story story = snapshot.getValue(Story.class);
-                    storyList.add(story);
-                }
 
-                displayStoryList(storyList);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        });
 
         binding.historyBtn.setOnClickListener(new View.OnClickListener() {
             @Override

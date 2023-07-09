@@ -102,6 +102,7 @@
         android:layout_height="0dp"
         android:layout_weight="10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_reward"/>
+        tools:listitem="@layout/row_reward"
+        android:padding="10dp"/>
 
 </LinearLayout>
