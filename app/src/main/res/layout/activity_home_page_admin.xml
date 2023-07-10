@@ -60,25 +60,25 @@
         <LinearLayout
             android:id="@+id/searchLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="15dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="#FF03DAC5">
+            android:background="#14CA9C"
+            android:padding="5dp">
 
             <EditText
                 android:id="@+id/contentsearchTV"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="7"
+                android:layout_height="40dp"
+                android:layout_weight="5"
                 android:hint="Search"
                 android:typeface="serif"
-                android:textStyle="bold"
                 android:inputType="text" />
 
             <ImageButton
                 android:id="@+id/uploadIB"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:contentDescription="upload-Button: trang đăng truyện"
@@ -87,7 +87,7 @@
             <ImageButton
                 android:id="@+id/searchIB"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:contentDescription="searchButton"
@@ -99,19 +99,45 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="#4CAF50">
+            android:layout_weight="3"
+            android:background="#12ACBD"
+            android:padding="3dp">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/image_name" />
+
+                <ImageView
+                    android:layout_width="76dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_10" />
+
+                <ImageView
+                    android:layout_width="78dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_7" />
+
+                <ImageView
+                    android:layout_width="78dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_3" />
+                <ImageView
+                    android:layout_width="78dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_9" />
+
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
             </TableRow>
         </TableLayout>
-
     </LinearLayout>
 
     <RelativeLayout
