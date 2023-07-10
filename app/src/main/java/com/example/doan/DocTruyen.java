@@ -2,7 +2,7 @@ package com.example.doan;
 
 public class DocTruyen {
     private String uid;
-    private int MaT;
+    private int maT;
     private int DC;
     private int maDD;
     private int YT;
@@ -14,7 +14,7 @@ public class DocTruyen {
 
     public DocTruyen(String uid, int maT, int DC, int DD, int YT, int DG, int chuongDD, String datetime) {
         this.uid = uid;
-        this.MaT = maT;
+        this.maT = maT;
         this.DC = DC;
         this.maDD = DD;
         this.YT = YT;
@@ -31,12 +31,12 @@ public class DocTruyen {
         this.uid = uid;
     }
 
-    public int getMaT() {
-        return MaT;
+    public int getmaT() {
+        return maT;
     }
 
-    public void setMaT(int maT) {
-        MaT = maT;
+    public void setmaT(int maT) {
+        maT = maT;
     }
 
     public int getDC() {

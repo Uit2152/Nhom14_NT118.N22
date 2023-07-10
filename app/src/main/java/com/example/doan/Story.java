@@ -1,12 +1,12 @@
 package com.example.doan;
 
 public class Story {
-    private int MaT;
+    private int maT;
     private String tenTV;
     private String tacgiaTV;
     private String tinhtrangTV;
     private int sochuongTV;
-    private String Mota;
+    private String mota;
     private String timestamp;
     private int maTL;
     private String image;
@@ -20,32 +20,32 @@ public class Story {
     }
 
     public Story(int id, String name, String author, String status, int views, String mota, String time, int matl, String image, String uid) {
-        this.MaT = id;
+        this.maT = id;
         this.tenTV = name;
         this.tacgiaTV = author;
         this.tinhtrangTV = status;
         this.sochuongTV = views;
-        this.Mota= mota;
+        this.mota= mota;
         this.timestamp=time;
         this.maTL=matl;
         this.image=image;
         this.uid=uid;
     }
     public Story(int maT,String tenTV, String tacgiaTV,int maTL, int sochuongTV, String mota) {
-        this.MaT=maT;
+        this.maT=maT;
         this.tenTV=tenTV;
         this.tacgiaTV=tacgiaTV;
         this.maTL=maTL;
         this.sochuongTV=sochuongTV;
-        this.Mota=mota;
+        this.mota=mota;
     }
 
-    public int getMaT() {
-        return MaT;
+    public int getmaT() {
+        return maT;
     }
 
-    public void setMaT(int id) {
-        this.MaT = id;
+    public void setmaT(int id) {
+        this.maT = id;
     }
 
     public String gettenTV() {
@@ -111,12 +111,12 @@ public class Story {
     }
 
 
-    public void setMota(String mota) {
-        Mota = mota;
+    public void setmota(String mota) {
+        mota = mota;
     }
 
-    public String getMota() {
-        return Mota;
+    public String getmota() {
+        return mota;
     }
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadChapterActivity">
+    tools:context=".UpdateChapterActivity">
 
 
     <TableRow
@@ -15,7 +15,7 @@
         android:background="@drawable/boder">
 
         <ImageButton
-            android:id="@+id/backBT1"
+            android:id="@+id/backBT"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
@@ -30,12 +30,12 @@
             android:layout_width="314dp"
             android:layout_height="50dp"
             android:gravity="center_horizontal"
-            android:text="Đăng chương truyện"
+            android:text="Cập nhật chương truyện"
             android:textColor="@color/grey"
             android:textSize="25sp" />
 
         <ImageButton
-            android:id="@+id/btnSave1"
+            android:id="@+id/btnSave"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"

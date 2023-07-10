@@ -1,15 +1,17 @@
 package com.example.doan;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doan.databinding.ActivityUploadNextBinding;
@@ -22,95 +24,102 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UploadNextActivity extends AppCompatActivity{
-
-    RecyclerView recyclerChap;
-    TextView nxttentruyen, nxttacgia, nxttinhtrang, nxtsochuong;
-    ImageView nxtImage;
-    List< ChuongTruyen> chapList;
-    DatabaseReference databaseReference;
-    ValueEventListener eventListener;
-
+public class UploadNextActivity extends AppCompatActivity {
+    private ImageView nxtImage;
+    private TextView nxttentruyen, nxttacgia, nxttinhtrang, nxtsochuong;
+    private int novelID;
     private ActivityUploadNextBinding binding;
+    private ArrayList<ChuongTruyen> chapterList = new ArrayList<>();
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityUploadNextBinding.inflate(getLayoutInflater());
+        binding = ActivityUploadNextBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        recyclerChap=findViewById(R.id.recyclerChap);
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(UploadNextActivity.this,1 );
-        recyclerChap.setLayoutManager(gridLayoutManager);
+        Intent intent = getIntent();
+        novelID = intent.getIntExtra("story_id", 1);
+        recyclerView = findViewById(R.id.recyclerChap);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        AlertDialog.Builder builder=new AlertDialog.Builder(UploadNextActivity.this);
-        builder.setCancelable(false);
-        //builder.setView(R.layout.progress_layout);
-        AlertDialog dialog=builder.create();
-        dialog.show();
+        loadNovelDetails();
 
-        chapList= new ArrayList<>();
+        // handle click backSUp (go-back button)
+        binding.backBT1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
-        UploadNextAdapter adapter= new UploadNextAdapter(UploadNextActivity.this,chapList );
-        recyclerChap.setAdapter(adapter);
+        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), UploadChapterActivity.class);
+                intent.putExtra("novel_id", novelID); // truyền mã truyện
+                v.getContext().startActivity(intent);            }
+        });
+    }
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("ChuongTruyen");
-        dialog.show();
+    private void loadNovelDetails() {
+        if (novelID == 0) {
+            // handle null novelID
+            return;
+        }
 
-        Story story=new Story();
-        eventListener=databaseReference.addValueEventListener((new ValueEventListener() {
+        DatabaseReference refNovel = FirebaseDatabase.getInstance().getReference("Truyen");
+        refNovel.orderByChild("maT").equalTo(novelID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                chapList.clear();
-                for(DataSnapshot itemSnapshot: snapshot.getChildren()){
-                    ChuongTruyen chuong= itemSnapshot.getValue( ChuongTruyen.class);
-                    if(chuong.getMaT()== story.getMaT()){
-                    chapList.add(chuong);}
+                // get data from Firebase
+                if (snapshot.exists()) {
+                    for (DataSnapshot novelSnapshot : snapshot.getChildren()) {
+                        String novelTitle = "" + novelSnapshot.child("tenTV").getValue();
+                        String author = "" + novelSnapshot.child("tacgiaTV").getValue();
+                        String status = "" + novelSnapshot.child("tinhtrangTV").getValue();
+                        String chapterNumbers = "" + novelSnapshot.child("sochuongTV").getValue();
+
+                        // update novel details
+                        binding.nxttentruyen.setText(novelTitle);
+                        binding.nxttacgia.setText(author);
+                        binding.nxtsochuong.setText(chapterNumbers);
+                        binding.nxttinhtrang.setText(status);
+
+
+                    }
+                } else {
+                    // handle not found
                 }
-                adapter.notifyDataSetChanged();
-                dialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                dialog.dismiss();
+                // handle error
             }
-        }));
+        });
 
-
-
-        nxttentruyen=findViewById(R.id.nxttentruyen);
-        nxttacgia=findViewById(R.id.nxttacgia);
-        nxttinhtrang=findViewById(R.id.nxttinhtrang);
-        nxtsochuong=findViewById(R.id.nxtsochuong);
-        nxtImage=findViewById(R.id.nxtImage);
-
-        Bundle bundle=getIntent().getExtras();
-        if (bundle != null) {
-            nxttentruyen.setText(bundle.getString("Tên truyện"));
-            nxttacgia.setText(bundle.getString("Tác giả"));
-            nxttinhtrang.setText(bundle.getString("Tình trạng"));
-            String chapterNumbers = String.valueOf(bundle.getInt("Số chương"));
-            nxtsochuong.setText(chapterNumbers);
-        }
-
-        //handle click backSUp( go-back button)
-        binding.backBT1.setOnClickListener(new View.OnClickListener()
-                                          {
-                                              @Override
-                                              public void onClick(View v)
-                                              {
-                                                  onBackPressed();
-                                              }
-                                          }
-        );
-
-        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+        DatabaseReference refChapter = FirebaseDatabase.getInstance().getReference("ChuongTruyen");
+        refChapter.orderByChild("maT").equalTo(novelID).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(UploadNextActivity.this, UploadChapterActivity.class));
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<ChuongTruyen> chapterList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ChuongTruyen chapter = snapshot.getValue(ChuongTruyen.class);
+                    chapterList.add(chapter);
+                }
+                displaychapterList(chapterList);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
     }
 
+    private void displaychapterList(List<ChuongTruyen> chapterList) {
+        UploadNextAdapter adapter = new UploadNextAdapter(chapterList);
+        recyclerView.setAdapter(adapter);
+    }
 }

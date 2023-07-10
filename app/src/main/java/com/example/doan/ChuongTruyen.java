@@ -1,11 +1,9 @@
 package com.example.doan;
 
-import java.security.Timestamp;
-
 public class ChuongTruyen {
     private int maT;
     private int maC;
-    private String ND;
+    private String nd;
     private String tenC;
     private String timestamp;
 
@@ -14,15 +12,21 @@ public class ChuongTruyen {
     }
     public ChuongTruyen(int maC, String ND, String tenC) {
         this.maC = maC;
-        this.ND = ND;
+        this.nd = ND;
         this.tenC = tenC;
     }
 
-    public int getMaT() {
+    public ChuongTruyen(int maT, int maC, String ND, String tenC) {
+        this.maT=maT;
+        this.maC = maC;
+        this.nd = ND;
+        this.tenC = tenC;
+    }
+    public int getmaT() {
         return this.maT;
     }
 
-    public void setMaT(int maT) {
+    public void setmaT(int maT) {
         this.maT = maT;
     }
 
@@ -34,12 +38,12 @@ public class ChuongTruyen {
         this.maC = maC;
     }
 
-    public String getND() {
-        return this.ND;
+    public String getnd() {
+        return this.nd;
     }
 
-    public void setND(String ND) {
-        this.ND = ND;
+    public void setnd(String ND) {
+        this.nd = ND;
     }
 
     public String getTenC() {

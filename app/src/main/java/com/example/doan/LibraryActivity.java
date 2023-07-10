@@ -87,7 +87,7 @@ public class LibraryActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
                     for (Story story : storyList) {
-                        if (docTruyen.getMaT() == story.getMaT()) {
+                        if (docTruyen.getmaT() == story.getmaT()) {
                             readStoryList.add(story);
                             break;
                         }
@@ -123,7 +123,7 @@ public class LibraryActivity extends AppCompatActivity {
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
                                 for (Story story : storyList) {
-                                    if (docTruyen.getMaT() == story.getMaT()) {
+                                    if (docTruyen.getmaT() == story.getmaT()) {
                                         readStoryList.add(story);
                                         break;
                                     }
@@ -176,7 +176,7 @@ public class LibraryActivity extends AppCompatActivity {
                                     List<Story> bookmarkedStoryList = new ArrayList<>();
                                     for (DocTruyen docTruyen : filteredList) {
                                         for (Story story : storyList) {
-                                            if (docTruyen.getMaT() == story.getMaT()) {
+                                            if (docTruyen.getmaT() == story.getmaT()) {
                                                 bookmarkedStoryList.add(story);
                                                 break;
                                             }

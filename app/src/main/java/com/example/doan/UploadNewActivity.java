@@ -5,20 +5,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doan.databinding.ActivityUploadNewBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UploadNewActivity extends AppCompatActivity {
@@ -27,29 +26,30 @@ public class UploadNewActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
 
-    EditText txttenTruyen, txttacGia, txtsoChuong, txtmoTa, txtmaTL;
+    EditText txtTenTruyen, txtTacGia, txtSoChuong, txtMoTa, txtMaTL, txtTinhTrang;
     ImageButton btnSave;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityUploadNewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        txttenTruyen= findViewById(R.id.txttenTruyen);
-        txttacGia= findViewById(R.id.txttacGia);
-        txtmaTL=findViewById(R.id.txtmaTL);
-        txtsoChuong= findViewById(R.id.txtsoChuong);
-        txtmoTa= findViewById(R.id.txtmoTa);
-        btnSave= findViewById(R.id.btnSave);
+        txtTenTruyen = findViewById(R.id.txttenTruyen);
+        txtTacGia = findViewById(R.id.txttacGia);
+        txtMaTL = findViewById(R.id.txtmaTL);
+        txtSoChuong = findViewById(R.id.txtsoChuong);
+        txtTinhTrang = findViewById(R.id.txttinhtrang);
+        txtMoTa = findViewById(R.id.txtmoTa);
+        btnSave = findViewById(R.id.btnSave);
 
         //handle click backSUp( go-back button)
         binding.backBT1.setOnClickListener(new View.OnClickListener() {
-                                               @Override
-                                               public void onClick(View v) {
-                                                   onBackPressed();
-                                               }
-                                           }
-        );
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         //handle click save
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -61,41 +61,110 @@ public class UploadNewActivity extends AppCompatActivity {
     }
 
     private void saveData() {
-        Random random = new Random();
-        int storyId = random.nextInt(100);
+        // Lấy giá trị từ các trường EditText
+        String tenTV = txtTenTruyen.getText().toString().trim();
+        String tacgiaTV = txtTacGia.getText().toString().trim();
+        String maTLStr = txtMaTL.getText().toString().trim();
+        String sochuongStr = txtSoChuong.getText().toString().trim();
+        String tinhtrangTV = txtTinhTrang.getText().toString().trim();
+        String Mota = txtMoTa.getText().toString().trim();
 
-        int MaT=storyId;
-        String tenTV= txttenTruyen.getText().toString();
-        String tacgiaTV=txttacGia.getText().toString();
-        int maTL= Integer.parseInt(txtmaTL.getText().toString());
-        int sochuongTV= Integer.parseInt(txtsoChuong.getText().toString());
-        String Mota=txtmoTa.getText().toString();
+        // Kiểm tra các trường dữ liệu có bị bỏ trống không
+        if (tenTV.isEmpty()) {
+            txtTenTruyen.setError("Vui lòng nhập tên truyện");
+            txtTenTruyen.requestFocus();
+            return;
+        }
+        if (tacgiaTV.isEmpty()) {
+            txtTacGia.setError("Vui lòng nhập tác giả");
+            txtTacGia.requestFocus();
+            return;
+        }
+        if (maTLStr.isEmpty()) {
+            txtMaTL.setError("Vui lòng nhập mã thể loại");
+            txtMaTL.requestFocus();
+            return;
+        }
+        if (sochuongStr.isEmpty()) {
+            txtSoChuong.setError("Vui lòng nhập số chương");
+            txtSoChuong.requestFocus();
+            return;
+        }
 
-        Story truyen= new Story(MaT, tenTV, tacgiaTV,maTL, sochuongTV, Mota);
+        // Chuyển đổi giá trị dạng chuỗi sang giá trị dạng số nguyên
+        final int maTL;
+        try {
+            maTL = Integer.parseInt(maTLStr);
+        } catch (NumberFormatException e) {
+            txtMaTL.setError("Mã thể loại phải là số nguyên");
+            txtMaTL.requestFocus();
+            return;
+        }
+        final int sochuongTV;
+        try {
+            sochuongTV = Integer.parseInt(sochuongStr);
+        } catch (NumberFormatException e) {
+            txtSoChuong.setError("Số chương phải là số nguyên");
+            txtSoChuong.requestFocus();
+            return;
+        }
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Truyen");
-        DatabaseReference storyRef = databaseReference.push(); // Tạo một child node mới với storyId tự động tăng
+        // Truy vấn cơ sở dữ liệu Firebase Realtime Database để lấy danh sách các truyện hiện có trong bảng Truyen
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Truyen");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Story> stories = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Story story = snapshot.getValue(Story.class);
+                    stories.add(story);
+                }
 
-        //String storyId = storyRef.getKey();
-
-
-
-        //String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-
-        FirebaseDatabase.getInstance().getReference("Truyen").child(String.valueOf(storyId)).setValue(truyen)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(UploadNewActivity.this, "Save successful", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
+                // Tìm ra MaT lớn nhất trong danh sách các truyện hiện có
+                int maxMaT = 0;
+                for (Story story : stories) {
+                    if (story.getmaT() > maxMaT) {
+                        maxMaT = story.getmaT();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+                }
+
+                // Tăng giá trị của maxMaT lên 1 để lấy MaT tiếp theo
+                int maT = maxMaT + 1;
+
+                String image="";
+                String uid="";
+                String timestamp="";
+
+                Story truyen= new Story(maT, tenTV, tacgiaTV, tinhtrangTV, sochuongTV, Mota,timestamp, maTL, image, uid);
+                // Thêm truyện mới vào bảng "Truyen" trên Firebase
+                DatabaseReference newRef = FirebaseDatabase.getInstance().getReference("Truyen");
+                newRef.push().setValue(truyen);
+
+                // Hiển thị ProgressDialog
+                progressDialog = new ProgressDialog(UploadNewActivity.this);
+                progressDialog.setMessage("Đang tải lên...");
+                progressDialog.show();
+
+                // Ẩn ProgressDialog sau khi tải lên thành công
+                newRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(UploadNewActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        progressDialog.dismiss();
+                        // Đóng UploadNewActivity sau khi tải lên thành công
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        progressDialog.dismiss();
                     }
                 });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
+            }
+        });
     }
 }
