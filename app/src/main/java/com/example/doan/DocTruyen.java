@@ -2,11 +2,11 @@ package com.example.doan;
 
 public class DocTruyen {
     private String uid;
-    private int MaT;
-    private int DC;
-    private int DD;
-    private int YT;
-    private int DG;
+    private int maT;
+    private int dc;
+    private int dd;
+    private int yt;
+    private int dg;
     private int chuongDD;
     private String timestamp;
 
@@ -14,11 +14,11 @@ public class DocTruyen {
 
     public DocTruyen(String uid, int maT, int DC, int DD, int YT, int DG, int chuongDD, String timestamp) {
         this.uid = uid;
-        this.MaT = maT;
-        this.DC = DC;
-        this.DD = DD;
-        this.YT = YT;
-        this.DG = DG;
+        this.maT = maT;
+        this.dc = DC;
+        this.dd = DD;
+        this.yt = YT;
+        this.dg = DG;
         this.chuongDD = chuongDD;
         this.timestamp = timestamp;
     }
@@ -31,44 +31,44 @@ public class DocTruyen {
         this.uid = uid;
     }
 
-    public int getMaT() {
-        return MaT;
+    public int getmaT() {
+        return maT;
     }
 
-    public void setMaT(int maT) {
-        MaT = maT;
+    public void setmaT(int maT) {
+        maT = maT;
     }
 
-    public int getDC() {
-        return DC;
+    public int getdc() {
+        return dc;
     }
 
-    public void setDC(int DC) {
-        this.DC = DC;
+    public void setdc(int DC) {
+        this.dc = DC;
     }
 
-    public int getDD() {
-        return DD;
+    public int getdd() {
+        return dd;
     }
 
-    public void setDD(int DD) {
-        this.DD = DD;
+    public void setdd(int DD) {
+        this.dd = DD;
     }
 
-    public int getYT() {
-        return YT;
+    public int getyt() {
+        return yt;
     }
 
-    public void setYT(int YT) {
-        this.YT = YT;
+    public void setyt(int YT) {
+        this.yt = YT;
     }
 
-    public int getDG() {
-        return DG;
+    public int getdg() {
+        return dg;
     }
 
-    public void setDG(int DG) {
-        this.DG = DG;
+    public void setdg(int DG) {
+        this.dg = DG;
     }
 
     public int getChuongDD() {
