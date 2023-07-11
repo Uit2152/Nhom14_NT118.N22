@@ -28,44 +28,45 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="0dp"
                 android:text="HomePage User"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:typeface="serif"
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/subTitleTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/titleTv"
+                android:typeface="serif"
+                android:textColor="@color/teal_700"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="-7dp"
                 android:text="abc@gmail.com" />
-
-
         </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/searchLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="15dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="#FF03DAC5">
+            android:background="#14CA9C"
+            android:padding="5dp">
 
             <EditText
                 android:id="@+id/contentsearchTV"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="7"
+                android:layout_height="40dp"
+                android:layout_weight="5"
                 android:hint="Search"
+                android:typeface="serif"
                 android:inputType="text" />
-
-
 
             <ImageButton
                 android:id="@+id/searchIB"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:contentDescription="searchButton"
@@ -77,19 +78,45 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:background="#4CAF50">
+            android:layout_weight="3"
+            android:background="#12ACBD"
+            android:padding="3dp">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/image_name" />
+
+                <ImageView
+                    android:layout_width="76dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_10" />
+
+                <ImageView
+                    android:layout_width="78dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_7" />
+
+                <ImageView
+                    android:layout_width="78dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_3" />
+                <ImageView
+                    android:layout_width="78dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/img_9" />
+
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
             </TableRow>
         </TableLayout>
-
     </LinearLayout>
 
     <RelativeLayout
@@ -105,8 +132,7 @@
             android:id="@+id/option"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/vien">
+            android:layout_marginTop="8dp">
 
             <ImageButton
                 android:id="@+id/categoryIB"
@@ -139,26 +165,32 @@
         <LinearLayout
             android:id="@+id/update"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="165dp"
             android:layout_below="@+id/option"
             android:layout_marginTop="12dp"
-            android:background="@drawable/vien"
-            android:orientation="vertical">
+            android:background="@drawable/noi"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp">
 
             <TableRow
                 android:id="@+id/tablerow1"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="30dp"
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/truyenMoiCapNhap"
+                    android:id="@+id/truyenNoiBat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="Truyện mới cập nhập"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:text=" Truyện nổi bật"
+                    android:textColor="@color/teal_700"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="serif" />
 
                 <TextView
                     android:id="@+id/xemThem1TV"
@@ -168,27 +200,32 @@
                     android:text="Xem thêm>"
                     android:textColor="@color/red"
                     android:textSize="20sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:typeface="serif" />
             </TableRow>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/likeNovelRV"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="132dp"
                 android:layout_weight="6"
-                app:spanCount="2"
-                tools:listitem="@layout/row_homepage"
-                android:contentDescription="truyện mới cập nhập">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:contentDescription="truyện mới cập nhập"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_homepage"></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/reading"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="165dp"
             android:layout_below="@+id/update"
             android:layout_marginTop="12dp"
-            android:background="@drawable/vien"
-            android:orientation="vertical">
+            android:elevation="4dp"
+            android:background="@drawable/noi"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp">
 
             <TableRow
                 android:id="@+id/tablerow2"
@@ -197,12 +234,14 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/truyendangdoc"
+                    android:id="@+id/truyenDaHoan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
-                    android:text="Truyện đang đọc"
-                    android:textColor="@color/black"
+                    android:text=" Truyện đã hoàn"
+                    android:typeface="serif"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal_700"
                     android:textSize="20sp" />
 
                 <TextView
@@ -211,16 +250,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Xem thêm>"
+                    android:typeface="serif"
                     android:textColor="@color/red"
                     android:textSize="20sp"
                     android:textStyle="italic" />
             </TableRow>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/completeNovelRV"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4"
-                app:spanCount="2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/row_homepage"
                 android:contentDescription="truyện đang đọc">
             </androidx.recyclerview.widget.RecyclerView>
