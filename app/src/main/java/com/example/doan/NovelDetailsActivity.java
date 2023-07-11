@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.doan.databinding.ActivityNoveldetailsBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.IntToLongFunction;
 
@@ -32,8 +35,10 @@ public class NovelDetailsActivity extends AppCompatActivity {
     Context context = NovelDetailsActivity.this;
     private String novelTitle;
     private int novelID;
-    DocTruyen docTruyen;
-    Users User;
+    private FirebaseAuth firebaseAuth;
+    private DocTruyen docTruyen;
+    private  HashMap<String, Object> hashMap;
+
     private  RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +49,25 @@ public class NovelDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         novelID= intent.getIntExtra("story_id", 1);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        docTruyen= new DocTruyen(firebaseAuth.getUid(), (int)novelID,0,0,0,0,0,String.valueOf(System.currentTimeMillis()));
+        hashMap= new HashMap<>();
+
         loadNovelDetails();
+        loadDocTruyen();
         recyclerView = findViewById(R.id.rvchapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        User=MyApplication.getUser();
-        docTruyen= new DocTruyen(User.getUid(), (int)novelID,0,0,0,0,0,String.valueOf(System.currentTimeMillis()));
+
+
         binding.backBT.setOnClickListener(new View.OnClickListener()
                                           {
                                               @Override
                                               public void onClick(View view)
                                               {
+                                                  DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DocTruyen");
+                                                  ref.child(firebaseAuth.getUid()).child(String.valueOf(novelID)).setValue(hashMap);
                                                   onBackPressed();
                                               }
                                           }
@@ -64,7 +76,14 @@ public class NovelDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+
+
                 docTruyen.setChuongDD(1);
+                hashMap.put("chuongDD", docTruyen.getChuongDD());
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("DocTruyen");
+                ref.child(firebaseAuth.getUid()).child(String.valueOf(novelID)).setValue(hashMap);
+
                 Intent intent1 = new Intent(NovelDetailsActivity.this, ReadActivity.class);
                 intent1.putExtra("story_id",(int)novelID );
                 intent1.putExtra("chapterID",(int)1);
@@ -77,7 +96,23 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                               @Override
                                               public void onClick(View view)
                                               {
+
                                                   docTruyen.setYT(1);
+                                                  binding.likeIB.setVisibility(View.INVISIBLE);
+                                                  binding.like2IB.setVisibility(View.VISIBLE);
+                                                  hashMap.put("YT", docTruyen.getYT());
+                                              }
+                                          }
+        );
+        binding.like2IB.setOnClickListener(new View.OnClickListener()
+                                          {
+                                              @Override
+                                              public void onClick(View view)
+                                              {
+                                                      docTruyen.setYT(0);
+                                                      binding.likeIB.setVisibility(View.VISIBLE);
+                                                      binding.like2IB.setVisibility(View.INVISIBLE);
+                                                      hashMap.put("YT", docTruyen.getYT());
                                               }
                                           }
         );
@@ -86,7 +121,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                               @Override
                                               public void onClick(View view)
                                               {
-                                                  docTruyen.setDG(1);
+                                                //bỏ
                                               }
                                           }
         );
@@ -96,7 +131,18 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                                    @Override
                                                    public void onClick(View view)
                                                    {
-                                                       docTruyen.setDC(1);
+                                                       if(docTruyen.getDC()==0)
+                                                       {
+                                                           docTruyen.setDC(1);
+                                                           binding.exclusiveIB.setBackgroundResource(R.color.new_background_color);
+                                                       }
+                                                       else
+                                                       {
+                                                           docTruyen.setDC(0);
+                                                           binding.exclusiveIB.setBackgroundResource(R.color.transparent);
+                                                       }
+
+                                                       hashMap.put("DC", docTruyen.getDC());
                                                    }
                                                }
         );
@@ -217,5 +263,63 @@ public class NovelDetailsActivity extends AppCompatActivity {
     private void displayStoryList(List<ChuongTruyen> chaptersList) {
         listOChapterAdapter adapter = new listOChapterAdapter(chaptersList);
         recyclerView.setAdapter(adapter);
+    }
+
+
+
+    private void loadDocTruyen()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("DocTruyen");
+
+        // Lọc danh sách chương theo ID truyện được chọn
+        myRef.child(firebaseAuth.getUid()).child(String.valueOf(novelID)).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    docTruyen= dataSnapshot.getValue(DocTruyen.class);
+                }
+                else {
+
+                }
+
+                if(docTruyen.getYT()==0)
+                {
+                    binding.likeIB.setVisibility(View.VISIBLE);
+                    binding.like2IB.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    binding.likeIB.setVisibility(View.INVISIBLE);
+                    binding.like2IB.setVisibility(View.VISIBLE);
+                }
+
+                if(docTruyen.getDC()==0)
+                {
+                    binding.exclusiveIB.setBackgroundResource(R.color.transparent);
+                }
+                else
+                {
+                    binding.exclusiveIB.setBackgroundResource(R.color.new_background_color);
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+        hashMap.put("uid", docTruyen.getUid());
+        hashMap.put("maT", docTruyen.getMaT());
+        hashMap.put("dc", docTruyen.getDC());
+        hashMap.put("yt", docTruyen.getYT());
+        hashMap.put("dg", docTruyen.getDG());
+        hashMap.put("dc", docTruyen.getDC());
+        hashMap.put("chuongDD", docTruyen.getChuongDD());
+        hashMap.put("timestamp", docTruyen.getTimestamp());
+
     }
 }

@@ -5,7 +5,7 @@ public class DocTruyen {
     private int MaT;
     private int DC;
     private int DD;
-private int YT;
+    private int YT;
     private int DG;
     private int chuongDD;
     private String timestamp;

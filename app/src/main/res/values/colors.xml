@@ -16,6 +16,6 @@
     <color name="grey">#9E9E9E</color>
     <color name="night_corner_2">#ed3559</color>
     <color name="image_profile">#e0e0e0</color>
-    <color name="new_background_color">#FFFFFF</color>
-
+    <color name="new_background_color">#12CDDC39</color>
+    <color name="transparent">@android:color/transparent</color>
 </resources>

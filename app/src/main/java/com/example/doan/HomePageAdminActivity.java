@@ -51,14 +51,7 @@ public class HomePageAdminActivity extends AppCompatActivity {
 
 
 
-        binding.logoutBt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                firebaseAuth.signOut();
 
-            }
-        });
 
         binding.uploadIB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +114,7 @@ public class HomePageAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(HomePageAdminActivity.this, CategoryActivity.class));
+                startActivity(new Intent(HomePageAdminActivity.this, RewardActivity.class));
 
             }
         });
@@ -129,7 +122,7 @@ public class HomePageAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(HomePageAdminActivity.this, CategoryActivity.class));
+                startActivity(new Intent(HomePageAdminActivity.this, FilterActivity.class));
 
             }
         });

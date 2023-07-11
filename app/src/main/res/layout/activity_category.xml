@@ -91,13 +91,13 @@
                 android:layout_marginEnd="25dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn"
+                android:drawableBottom="@drawable/vien"
                 android:elevation="4dp"
                 android:text="  Ngôn tình  "
-                android:drawableBottom="@drawable/vien"
-                android:typeface="serif"
                 android:textColor="@color/green"
                 android:textSize="25sp"
-                android:translationZ="2dp" />
+                android:translationZ="2dp"
+                android:typeface="serif" />
 
             <TextView
                 android:id="@+id/c4TV"

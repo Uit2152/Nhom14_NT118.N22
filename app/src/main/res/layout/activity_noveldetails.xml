@@ -157,7 +157,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/boder">
-        <TableLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -165,22 +165,43 @@
                 android:id="@+id/likeCountTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_centerHorizontal="true"
                 android:contentDescription="Số lượng yêu thích"/>
 
             <ImageButton
                 android:id="@+id/likeIB"
-                android:layout_width="0dp"
+                android:visibility="visible"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/likeCountTV"
+                android:background="@android:color/transparent"
                 android:contentDescription="searchButton"
-                android:src="@drawable/like"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/like" />
+            <ImageButton
+                android:id="@+id/like2IB"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/likeCountTV"
+                android:contentDescription="searchButton"
+                android:adjustViewBounds="true"
+                android:padding="5dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/like2"
                 android:background="@android:color/transparent" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/like2IB"
                 android:gravity="center"
+                android:layout_marginTop="-20dp"
                 android:text="Yêu thích"/>
-        </TableLayout>
+        </RelativeLayout>
 
         <TableLayout
             android:layout_width="0dp"

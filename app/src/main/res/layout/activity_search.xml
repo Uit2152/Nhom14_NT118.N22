@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SearchActivity"
     android:id="@+id/searchParent"
     android:layout_width="match_parent"
     android:layout_height="50dp"
+    android:background="@drawable/boder"
     android:orientation="horizontal"
-    android:background="#FF03DAC5">
+    tools:context=".SearchActivity">
+
     <LinearLayout
         android:id="@+id/searchLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#FF03DAC5">
+        android:background="#FF03DAC5"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backBT"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@android:string/ok"
+            android:src="@drawable/arrow_right" />
+
         <EditText
             android:id="@+id/contentsearchTV"
             android:layout_width="0dp"
@@ -23,14 +34,6 @@
             android:hint="Search"
             android:inputType="text" />
 
-        <ImageButton
-            android:id="@+id/uploadIB"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="upload-Button: trang đăng truyện"
-            android:src="@drawable/pen" />
 
         <ImageButton
             android:id="@+id/searchIB"
@@ -43,6 +46,7 @@
 
 
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecyclerView"
         android:layout_width="match_parent"
