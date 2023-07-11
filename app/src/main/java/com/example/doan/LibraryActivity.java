@@ -87,7 +87,7 @@ public class LibraryActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
                     for (Story story : storyList) {
-                        if (docTruyen.getmaT() == story.getmaT()) {
+                        if (docTruyen.getMaT() == story.getmaT()) {
                             readStoryList.add(story);
                             break;
                         }
@@ -123,7 +123,7 @@ public class LibraryActivity extends AppCompatActivity {
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
                                 for (Story story : storyList) {
-                                    if (docTruyen.getmaT() == story.getmaT()) {
+                                    if (docTruyen.getMaT() == story.getmaT()) {
                                         readStoryList.add(story);
                                         break;
                                     }
@@ -168,7 +168,7 @@ public class LibraryActivity extends AppCompatActivity {
                                     List<DocTruyen> filteredList = new ArrayList<>();
                                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                         DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
-                                        if (docTruyen.getmaDD() == 1) {
+                                        if (docTruyen.getDD() == 1) {
                                             filteredList.add(docTruyen);
                                         }
                                     }
@@ -176,7 +176,7 @@ public class LibraryActivity extends AppCompatActivity {
                                     List<Story> bookmarkedStoryList = new ArrayList<>();
                                     for (DocTruyen docTruyen : filteredList) {
                                         for (Story story : storyList) {
-                                            if (docTruyen.getmaT() == story.getmaT()) {
+                                            if (docTruyen.getMaT() == story.getmaT()) {
                                                 bookmarkedStoryList.add(story);
                                                 break;
                                             }
