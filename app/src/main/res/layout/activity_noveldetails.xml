@@ -33,7 +33,7 @@
             android:layout_below="@id/backBT">
             <ImageView
                 android:id="@+id/imageIV"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="-20dp"
                 android:layout_width="85dp"
                 android:layout_height="130dp"
                 android:layout_alignParentLeft="true"
@@ -141,11 +141,25 @@
 
 
         <ImageButton
+            android:id="@+id/bookmarkIB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/bookmark"
+            android:visibility="invisible"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:contentDescription="Đánh dấu truyện"/>
+        <ImageButton
+            android:id="@+id/bookmark1IB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/bookmark1"
+            android:visibility="visible"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:contentDescription="Đánh dấu truyện"/>
     </RelativeLayout>
