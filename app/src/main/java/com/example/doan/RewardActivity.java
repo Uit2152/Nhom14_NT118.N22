@@ -49,7 +49,7 @@ public class RewardActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Truyen");
 
-        myRef.orderByChild("Views").addValueEventListener(new ValueEventListener() {
+        myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Story> storyList = new ArrayList<>();
@@ -93,7 +93,7 @@ public class RewardActivity extends AppCompatActivity {
                     DatabaseReference myRef = database.getReference("Truyen");
 
                     // Lọc danh sách truyện theo lược xem nhiều
-                    myRef.orderByChild("Views").addValueEventListener(new ValueEventListener() {
+                    myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             List<Story> storyList = new ArrayList<>();
@@ -125,7 +125,7 @@ public class RewardActivity extends AppCompatActivity {
                     DatabaseReference myRef = database.getReference("Truyen");
 
                     // Lọc danh sách truyện theo lược đề cử nhiều
-                    myRef.orderByChild("DeCu").addValueEventListener(new ValueEventListener() {
+                    myRef.orderByChild("deCu").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             List<Story> storyList = new ArrayList<>();
@@ -156,7 +156,7 @@ public class RewardActivity extends AppCompatActivity {
                     DatabaseReference myRef = database.getReference("Truyen");
 
                     // Lọc danh sách truyện theo lược Thích nhiều
-                    myRef.orderByChild("Likes").addValueEventListener(new ValueEventListener() {
+                    myRef.orderByChild("likes").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             List<Story> storyList = new ArrayList<>();
