@@ -1,6 +1,5 @@
 package com.example.doan;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,60 +7,62 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class UploadNextAdapter extends RecyclerView.Adapter<UploadNextViewHolder> {
-    private Context context;
-    private List<ChuongTruyen> chapList;
+public class UploadNextAdapter extends RecyclerView.Adapter<UploadNextAdapter.MyViewHolder> {
+    private List<ChuongTruyen> chapterList;
 
-    public UploadNextAdapter(Context context, List<ChuongTruyen> chapList) {
-        this.context = context;
-        this.chapList = chapList;
+    public UploadNextAdapter(List<ChuongTruyen> chapterList) {
+        this.chapterList = chapterList;
     }
+
 
     @NonNull
     @Override
-    public UploadNextViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_chapter, parent, false);
-        return new UploadNextViewHolder(view);
+    public UploadNextAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.row_list_chapter, parent, false);
+        return new UploadNextAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UploadNextViewHolder holder, int position) {
-        holder.chuong.setText(String.valueOf(chapList.get(position).getMaC()));
-        holder.tenchap.setText(chapList.get(position).getTenC());
+    public void onBindViewHolder(@NonNull UploadNextAdapter.MyViewHolder holder, int position) {
+        if (chapterList == null || chapterList.isEmpty()) {
+            return;
+        }
+        ChuongTruyen chapter = chapterList.get(position);
+        if (chapter != null) {
+            String tenC = chapter.getTenC() != null ? chapter.getTenC() : "Unknown";
+            holder.maC.setText(String.valueOf(chapter.getMaC()));
+            holder.tenC.setText(tenC);
 
-        holder.recCard1.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(context, UploadChapterActivity.class);
-                intent.putExtra ("Chương",chapList.get(holder.getAdapterPosition()).getMaC());
-                intent.putExtra ("Tên chương",chapList.get(holder.getAdapterPosition()).getTenC());
-
-                context.startActivity(intent);
-            }
-        }));
-
+            holder.tenC.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), UpdateChapterActivity.class);
+                    intent.putExtra("chapter_id", chapter.getMaC()); // truyền mã chương
+                    intent.putExtra("novel_id", chapter.getmaT()); // truyền mã truyện
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
-        return chapList.size();
+        return chapterList.size();
     }
-}
 
-class UploadNextViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView maC, tenC;
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            maC = itemView.findViewById(R.id.maC);
+            tenC = itemView.findViewById(R.id.tenC);
 
-    TextView chuong, tenchap;
-    CardView recCard1;
-    public UploadNextViewHolder(@NonNull View itemView) {
-        super(itemView);
 
-        chuong=itemView.findViewById(R.id.chuong);
-        tenchap= itemView.findViewById(R.id.tenchap);
-        recCard1=itemView.findViewById(R.id.recCard1);
+        }
     }
 }

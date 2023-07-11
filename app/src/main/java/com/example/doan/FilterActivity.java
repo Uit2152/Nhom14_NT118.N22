@@ -89,15 +89,15 @@ public class FilterActivity extends AppCompatActivity {
             }
 
             RadioButton radioButton1 = findViewById(R.id.TH);
-            radioButton1.setTag(1); // thể loại "Hành động"
+            radioButton1.setTag(1); // thể loại "Tiên hiệp"
             RadioButton radioButton2 = findViewById(R.id.KH);
-            radioButton2.setTag(2); // thể loại "Tình cảm"
+            radioButton2.setTag(2); // thể loại "Kiếm hiệp"
             RadioButton radioButton3 = findViewById(R.id.NT);
-            radioButton3.setTag(3); // thể loại "Kinh dị"
+            radioButton3.setTag(3); // thể loại "Ngôn tình"
             RadioButton radioButton4 = findViewById(R.id.DT);
-            radioButton4.setTag(4); // thể loại "Viễn tưởng"
+            radioButton4.setTag(4); // thể loại "Đô thị"
             RadioButton radioButton5 = findViewById(R.id.TT);
-            radioButton5.setTag(5); // thể loại "Thần thoại"
+            radioButton5.setTag(5); // thể loại "Trinh thám"
 
             RadioGroup radioGroup1 = findViewById(R.id.TheLoai);
             int selectedId = radioGroup1.getCheckedRadioButtonId();

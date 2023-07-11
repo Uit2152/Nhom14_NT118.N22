@@ -21,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class RewardActivity extends AppCompatActivity {
@@ -50,19 +49,17 @@ public class RewardActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Truyen");
 
-        myRef.orderByChild("Views").addValueEventListener(new ValueEventListener() {
+        myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<Story> storyList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Story story = snapshot.getValue(Story.class);
-                    if(story.getViews()>9)
-                    {
+                    if(story.getViews()>9) {
                         storyList.add(story);
                     }
-
-
                 }
+                Collections.reverse(storyList); // đảo ngược thứ tự các phần tử trong danh sách
                 displayStoryList(recyclerView,storyList);
             }
 
@@ -95,20 +92,18 @@ public class RewardActivity extends AppCompatActivity {
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("Truyen");
 
-                    // Lọc danh sách truyện theo thể loại được chọn
-                    myRef.orderByChild("Views").addValueEventListener(new ValueEventListener() {
+                    // Lọc danh sách truyện theo lược xem nhiều
+                    myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             List<Story> storyList = new ArrayList<>();
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 Story story = snapshot.getValue(Story.class);
-                                if(story.getViews()>9)
-                                {
+                                if(story.getViews()>9) {
                                     storyList.add(story);
                                 }
-
-
                             }
+                            Collections.reverse(storyList); // đảo ngược thứ tự các phần tử trong danh sách
                             displayStoryList(recyclerView,storyList);
                         }
 
@@ -126,37 +121,27 @@ public class RewardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (storyList != null) {
-                    DatabaseReference docRef = database.getReference("DocTruyen");
-                    docRef.addValueEventListener(new ValueEventListener() {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Truyen");
+
+                    // Lọc danh sách truyện theo lược đề cử nhiều
+                    myRef.orderByChild("deCu").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            List<Story> sortedStoryList = new ArrayList<>();
-                            for (Story story : storyList) {
-                                int views = 0;
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
-                                    if (docTruyen.getMaT() == story.getMaT() && docTruyen.getDC()==1) {
-                                        views++;
-                                    }
+                            List<Story> storyList = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                Story story = snapshot.getValue(Story.class);
+                                if(story.getDeCu()>0) {
+                                    storyList.add(story);
                                 }
-                                story.setViews(views);
-                                sortedStoryList.add(story);
                             }
-
-                            Collections.sort(sortedStoryList, new Comparator<Story>() {
-                                @Override
-                                public int compare(Story s1, Story s2) {
-                                    return s2.getViews() - s1.getViews();
-                                }
-                            });
-
-                            RewardAdapter adapter = new RewardAdapter(sortedStoryList);
-                            recyclerView.setAdapter(adapter);
+                            Collections.reverse(storyList); // đảo ngược thứ tự các phần tử trong danh sách
+                            displayStoryList(recyclerView,storyList);
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle error
+                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                         }
                     });
                 }
@@ -167,37 +152,27 @@ public class RewardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (storyList != null) {
-                    DatabaseReference docRef = database.getReference("DocTruyen");
-                    docRef.addValueEventListener(new ValueEventListener() {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Truyen");
+
+                    // Lọc danh sách truyện theo lược Thích nhiều
+                    myRef.orderByChild("likes").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            List<Story> sortedStoryList = new ArrayList<>();
-                            for (Story story : storyList) {
-                                int views = 0;
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
-                                    if (docTruyen.getMaT() == story.getMaT() && docTruyen.getYT()==1) {
-                                        views++;
-                                    }
+                            List<Story> storyList = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                Story story = snapshot.getValue(Story.class);
+                                if(story.getLikes()>0) {
+                                    storyList.add(story);
                                 }
-                                story.setViews(views);
-                                sortedStoryList.add(story);
                             }
-
-                            Collections.sort(sortedStoryList, new Comparator<Story>() {
-                                @Override
-                                public int compare(Story s1, Story s2) {
-                                    return s2.getViews() - s1.getViews();
-                                }
-                            });
-
-                            RewardAdapter adapter = new RewardAdapter(sortedStoryList);
-                            recyclerView.setAdapter(adapter);
+                            Collections.reverse(storyList); // đảo ngược thứ tự các phần tử trong danh sách
+                            displayStoryList(recyclerView,storyList);
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle error
+                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                         }
                     });
                 }

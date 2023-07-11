@@ -28,7 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.function.IntToLongFunction;
 
 public class NovelDetailsActivity extends AppCompatActivity {
     private ActivityNoveldetailsBinding binding;
@@ -175,7 +174,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
             return;
         }
         DatabaseReference refNovel = FirebaseDatabase.getInstance().getReference("Truyen");
-        refNovel.orderByChild("MaT").equalTo(novelID).addValueEventListener(new ValueEventListener() {
+        refNovel.orderByChild("maT").equalTo(novelID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //get data from firebase
@@ -183,7 +182,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
                     for (DataSnapshot novelSnapshot : snapshot.getChildren()) {
                         String novelTitle = "" + novelSnapshot.child("tenTV").getValue();
                         String image = "" + novelSnapshot.child("image").getValue();
-                        String description = "" + novelSnapshot.child("Mota").getValue();
+                        String description = "" + novelSnapshot.child("mota").getValue();
                         String timestamp = "" + novelSnapshot.child("timestamp").getValue();
                         String categoryId = "" + novelSnapshot.child("maTL").getValue(); // truy cập đến trường dữ liệu maTL
                         String author = "" + novelSnapshot.child("tacgiaTV").getValue();

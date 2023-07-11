@@ -26,6 +26,7 @@ public class AccountActivity extends AppCompatActivity {
         firebaseAuth= FirebaseAuth.getInstance();
         checkUser();
 
+
         binding.settingsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v)
@@ -34,12 +35,12 @@ public class AccountActivity extends AppCompatActivity {
 
             }
         });
-        binding.NenVaMauChuButton.setOnClickListener(new View.OnClickListener(){
+        binding.NenVaMauChuButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(AccountActivity.this, ChangeThemeActivity.class));
-
+            public void onClick(View v) {
+                // Khởi chạy một hoạt động mới
+                Intent intent = new Intent(AccountActivity.this, SettingsActivity.class);
+                startActivity(intent);
             }
         });
         binding.ChinhSachButton.setOnClickListener(new View.OnClickListener() {

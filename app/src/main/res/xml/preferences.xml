@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Appearance">
+        <ListPreference
+            android:key="background_color"
+            android:title="Background Color"
+            android:summary="Select a background color"
+            android:defaultValue="#000000"
+            android:entries="@array/background_color_names"
+            android:entryValues="@array/background_color_values"
+            android:dialogTitle="Select a background color"
+            android:dialogLayout="@layout/multi_choice_list" />
+    </PreferenceCategory>
+</PreferenceScreen>

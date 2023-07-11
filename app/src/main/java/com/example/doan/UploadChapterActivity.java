@@ -1,6 +1,7 @@
 package com.example.doan;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,15 +19,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
-import java.util.Calendar;
-
 public class UploadChapterActivity extends AppCompatActivity{
     private ActivityUploadChapterBinding binding;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
 
+    private int novelID;
     EditText txtTTChuong, txttenChuong, txtnoiDung;
     ImageButton btnSave1;
     @Override
@@ -60,21 +59,21 @@ public class UploadChapterActivity extends AppCompatActivity{
     }
 
     private void saveData() {
+        int maC = Integer.parseInt(txtTTChuong.getText().toString());
+        String tenC = txttenChuong.getText().toString();
+        String ND = txtnoiDung.getText().toString();
+        Intent intent1 = getIntent();
+        novelID = intent1.getIntExtra("novel_id", 1);
+        int maT=novelID;
+        ChuongTruyen chuong = new ChuongTruyen(maT, maC,  ND,tenC);
 
+        String id = String.valueOf(System.currentTimeMillis()); // Tạo ID duy nhất cho chương truyện mới
 
-        int MaC= Integer.parseInt(txtTTChuong.getText().toString());
-        String tenC=txttenChuong.getText().toString();
-        String ND=txtnoiDung.getText().toString();
-
-        ChuongTruyen chuong= new  ChuongTruyen(MaC, tenC, ND);
-
-        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-
-        FirebaseDatabase.getInstance().getReference("ChuongTruyen").child(currentDate).setValue(chuong)
+        FirebaseDatabase.getInstance().getReference("ChuongTruyen").child(id).setValue(chuong)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(UploadChapterActivity.this, "Save successful", Toast.LENGTH_SHORT).show();
                             finish();
                         }

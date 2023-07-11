@@ -32,8 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Cài Đặt Tài khoản"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="30sp"/>
     </RelativeLayout>
 
     <!-- Content -->
@@ -43,50 +45,56 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/headerLayout"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/nameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name:"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="66dp"
             android:layout_marginTop="0dp"
             android:inputType="text"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/emailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="1dp"
             android:text="Email:"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="69dp"
             android:layout_marginTop="0dp"
             android:inputType="textEmailAddress"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/currentPasswordLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="Current Password:"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/currentPasswordEditText"
@@ -95,24 +103,26 @@
             android:layout_marginTop="0dp"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/passwordLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="Password:"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:layout_marginTop="0dp"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/saveButton"
@@ -120,26 +130,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Save"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:typeface="serif"
+            android:textStyle="bold"
+            android:textColor="@color/image_profile"
+            android:textSize="20sp"
+            android:backgroundTint="@color/teal_700"/>
 
-        <Button
-            android:id="@+id/changeProfileImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Change Avatar"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
 
-        <ImageView
-            android:id="@+id/avatarImageView"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/default_profile_image"
-            android:layout_marginTop="5dp"
-            android:contentDescription="Avatar" />
 
     </LinearLayout>
 </LinearLayout>

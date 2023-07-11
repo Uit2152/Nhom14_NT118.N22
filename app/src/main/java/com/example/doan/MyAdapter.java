@@ -1,5 +1,6 @@
 package com.example.doan;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -31,9 +32,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        //Glide.with(context).load(storyList.get(position).getDataImage()).into(holder.recImage);
+        // Sử dụng Glide để hiển thị ảnh của truyện
+
         holder.rectentruyen.setText(storyList.get(position).gettenTV());
         holder.rectacgia.setText(storyList.get(position).gettacgiaTV());
         holder.rectinhtrang.setText(storyList.get(position).gettinhtrangTV());
@@ -41,14 +44,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         holder.recCard.setOnClickListener((new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(context, UploadNextActivity.class);
-                intent.putExtra ("Tên truyện",storyList.get(holder.getAdapterPosition()).gettenTV());
-                intent.putExtra ("Tác giả",storyList.get(holder.getAdapterPosition()).gettacgiaTV());
-                intent.putExtra ("Tình trạng",storyList.get(holder.getAdapterPosition()).gettinhtrangTV());
-                intent.putExtra ("Số chương",storyList.get(holder.getAdapterPosition()).getsochuongTV());
-
-                context.startActivity(intent);
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), UploadNextActivity.class);
+                intent.putExtra("story_id", storyList.get(position).getmaT());
+                v.getContext().startActivity(intent);
             }
         }));
     }

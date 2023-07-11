@@ -14,8 +14,11 @@
         <activity
             android:name=".SetingACActivity"
             android:exported="false" />
+
+        <activity android:name=".MyPreferenceFragment"
+            android:exported="false" />
         <activity
-            android:name=".ChangeThemeActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".AccountActivity"
@@ -85,6 +88,10 @@
         <activity
             android:name=".UploadChapterActivity"
             android:exported="false" />
+        <activity
+            android:name=".UpdateChapterActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

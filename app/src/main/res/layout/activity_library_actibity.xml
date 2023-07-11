@@ -69,6 +69,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:text="Lịch sử đọc"
                 android:drawableBottom="@drawable/vien"
+                android:backgroundTint="@color/teal_700"
                 android:typeface="serif"
                 android:textStyle="bold"
                 android:textColor="@color/green"
@@ -106,7 +107,8 @@
                 android:layout_weight="5"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
-                tools:listitem="@layout/row_library" />
+                tools:listitem="@layout/row_library"
+                android:padding="10dp"/>
 
         </LinearLayout>
     </RelativeLayout>

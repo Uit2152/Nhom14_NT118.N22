@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,7 +47,7 @@ public class listOChapterAdapter extends RecyclerView.Adapter<listOChapterAdapte
                     public void onClick(View v) {
                         // Truyền dữ liệu về truyện qua intent
                         Intent intent = new Intent(v.getContext(), ReadActivity.class);
-                        intent.putExtra("story_id",(int)chapter.getMaT() );
+                        intent.putExtra("story_id",(int)chapter.getmaT() );
                         intent.putExtra("chapterID",(int)chapter.getMaC());
                         v.getContext().startActivity(intent);
                     }
@@ -68,12 +67,12 @@ public class listOChapterAdapter extends RecyclerView.Adapter<listOChapterAdapte
                 super(itemView);
                 parentCV= itemView.findViewById(R.id.recCard1);
 
-                tenchuongTV = itemView.findViewById(R.id.tenchap);
+                tenchuongTV = itemView.findViewById(R.id.tenC);
                 tenchuongTV.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                 tenchuongTV.setSelected(true);
                 tenchuongTV.setSingleLine();
 
-                sochuongTV = itemView.findViewById(R.id.chuong);
+                sochuongTV = itemView.findViewById(R.id.maC);
 
             }
         }

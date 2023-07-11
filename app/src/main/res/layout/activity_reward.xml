@@ -45,7 +45,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbarStyle="insideInset"
-        android:scrollbarSize="2dp">
+        android:scrollbarSize="2dp"
+        android:padding="3dp">
 
         <LinearLayout
             android:id="@+id/filterLinearLayout"
@@ -65,7 +66,7 @@
                 android:background="@drawable/btn"
                 android:typeface="serif"
                 android:textColor="@color/green"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/c2TV"
@@ -78,7 +79,7 @@
                 android:drawableBottom="@drawable/vien"
                 android:background="@drawable/btn"
                 android:textColor="@color/green"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/c3TV"
@@ -91,7 +92,7 @@
                 android:textColor="@color/green"
                 android:drawableBottom="@drawable/vien"
                 android:background="@drawable/btn"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -102,6 +103,7 @@
         android:layout_height="0dp"
         android:layout_weight="10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_reward"/>
+        tools:listitem="@layout/row_reward"
+        android:padding="10dp"/>
 
 </LinearLayout>

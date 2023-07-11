@@ -1,31 +1,21 @@
 package com.example.doan;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.view.ViewDebug;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doan.databinding.ActivityReadBinding;
-import com.github.barteksc.pdfviewer.listener.OnErrorListener;
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
-import com.github.barteksc.pdfviewer.listener.OnPageErrorListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class ReadActivity extends AppCompatActivity {
     //view binding
@@ -110,8 +100,8 @@ public class ReadActivity extends AppCompatActivity {
                     for (DataSnapshot novelSnapshot : snapshot.getChildren()) {
                         ChuongTruyen chuong= novelSnapshot.getValue(ChuongTruyen.class);
                         assert chuong != null;
-                        if( chuong.getMaT()== novelID ) {
-                            String noidung = "" + novelSnapshot.child("ND").getValue();
+                        if( chuong.getmaT()== novelID ) {
+                            String noidung = "" + novelSnapshot.child("nd").getValue();
                             String tenC = "" + novelSnapshot.child("tenC").getValue();
 
                             //set data

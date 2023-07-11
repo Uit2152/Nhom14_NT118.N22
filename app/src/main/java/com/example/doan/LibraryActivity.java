@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doan.databinding.ActivityLibraryActibityBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class LibraryActivity extends AppCompatActivity {
@@ -32,6 +32,7 @@ public class LibraryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FirebaseAuth firebaseAuth;
     List<Story> storyList = new ArrayList<>();
+    private boolean isHistoryClicked = false;
 
     //firebase auth
 
@@ -54,11 +55,9 @@ public class LibraryActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.LibraryRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // Tạo kết nối tới Firebase và lấy dữ liệu truyện theo yêu cầu
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        // Tạo kết nối tới Firebase và lấy dữ liệu truyện theo yêu cầu
         DatabaseReference myRef = database.getReference("Truyen");
-
         myRef.orderByChild("views").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -76,35 +75,61 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
+        DatabaseReference docRef = database.getReference("DocTruyen");
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        String uid = currentUser.getUid();
+        Query query = docRef.orderByChild("uid").equalTo(uid);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Story> readStoryList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
+                    for (Story story : storyList) {
+                        if (docTruyen.getmaT() == story.getmaT()) {
+                            readStoryList.add(story);
+                            break;
+                        }
+                    }
+                }
+                LibraryAdapter adapter = new LibraryAdapter(readStoryList);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+
+
+
+
+
         binding.historyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (storyList != null) {
                     DatabaseReference docRef = database.getReference("DocTruyen");
-                    docRef.addValueEventListener(new ValueEventListener() {
+                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                    FirebaseUser currentUser = auth.getCurrentUser();
+                    String uid = currentUser.getUid();
+                    Query query = docRef.orderByChild("uid").equalTo(uid);
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            List<Story> sortedStoryList = new ArrayList<>();
-                            for (Story story : storyList) {
-                                int views = 0;
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
-                                    if (docTruyen.getMaT() == story.getMaT()) {
-                                        views++;
+                            List<Story> readStoryList = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
+                                for (Story story : storyList) {
+                                    if (docTruyen.getmaT() == story.getmaT()) {
+                                        readStoryList.add(story);
+                                        break;
                                     }
                                 }
-                                story.setViews(views);
-                                sortedStoryList.add(story);
                             }
-
-                            Collections.sort(sortedStoryList, new Comparator<Story>() {
-                                @Override
-                                public int compare(Story s1, Story s2) {
-                                    return s2.getViews() - s1.getViews();
-                                }
-                            });
-
-                            LibraryAdapter adapter = new LibraryAdapter(sortedStoryList);
+                            LibraryAdapter adapter = new LibraryAdapter(readStoryList);
                             recyclerView.setAdapter(adapter);
                         }
 
@@ -121,32 +146,51 @@ public class LibraryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (storyList != null) {
+                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                    FirebaseUser currentUser = auth.getCurrentUser();
+                    String uid = currentUser.getUid();
+
                     DatabaseReference docRef = database.getReference("DocTruyen");
-                    docRef.addValueEventListener(new ValueEventListener() {
+                    Query orderByMaDD = docRef.orderByChild("maDD").equalTo(1);
+                    orderByMaDD.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            List<Story> sortedStoryList = new ArrayList<>();
-                            for (Story story : storyList) {
-                                int views = 0;
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
-                                    if (docTruyen.getMaT() == story.getMaT()) {
-                                        views++;
-                                    }
-                                }
-                                story.setViews(views);
-                                sortedStoryList.add(story);
+                            List<DocTruyen> docTruyenList = new ArrayList<>();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
+                                docTruyenList.add(docTruyen);
                             }
 
-                            Collections.sort(sortedStoryList, new Comparator<Story>() {
+                            Query filterByUid = docRef.orderByChild("uid").equalTo(uid);
+                            filterByUid.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
-                                public int compare(Story s1, Story s2) {
-                                    return s2.getViews() - s1.getViews();
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    List<DocTruyen> filteredList = new ArrayList<>();
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        DocTruyen docTruyen = snapshot.getValue(DocTruyen.class);
+                                        if (docTruyen.getmaDD() == 1) {
+                                            filteredList.add(docTruyen);
+                                        }
+                                    }
+
+                                    List<Story> bookmarkedStoryList = new ArrayList<>();
+                                    for (DocTruyen docTruyen : filteredList) {
+                                        for (Story story : storyList) {
+                                            if (docTruyen.getmaT() == story.getmaT()) {
+                                                bookmarkedStoryList.add(story);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    LibraryAdapter adapter = new LibraryAdapter(bookmarkedStoryList);
+                                    recyclerView.setAdapter(adapter);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    // Handle error
                                 }
                             });
-
-                            LibraryAdapter adapter = new LibraryAdapter(sortedStoryList);
-                            recyclerView.setAdapter(adapter);
                         }
 
                         @Override
