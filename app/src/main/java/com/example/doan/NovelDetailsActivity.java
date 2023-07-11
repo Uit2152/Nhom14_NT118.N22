@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -96,10 +95,10 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                               public void onClick(View view)
                                               {
 
-                                                  docTruyen.setYT(1);
+                                                  docTruyen.setyt(1);
                                                   binding.likeIB.setVisibility(View.INVISIBLE);
                                                   binding.like2IB.setVisibility(View.VISIBLE);
-                                                  hashMap.put("YT", docTruyen.getYT());
+                                                  hashMap.put("YT", docTruyen.getyt());
                                               }
                                           }
         );
@@ -108,10 +107,10 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                               @Override
                                               public void onClick(View view)
                                               {
-                                                      docTruyen.setYT(0);
+                                                      docTruyen.setyt(0);
                                                       binding.likeIB.setVisibility(View.VISIBLE);
                                                       binding.like2IB.setVisibility(View.INVISIBLE);
-                                                      hashMap.put("YT", docTruyen.getYT());
+                                                      hashMap.put("YT", docTruyen.getyt());
                                               }
                                           }
         );
@@ -130,18 +129,18 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                                    @Override
                                                    public void onClick(View view)
                                                    {
-                                                       if(docTruyen.getDC()==0)
+                                                       if(docTruyen.getdc()==0)
                                                        {
-                                                           docTruyen.setDC(1);
+                                                           docTruyen.setdc(1);
                                                            binding.exclusiveIB.setBackgroundResource(R.color.new_background_color);
                                                        }
                                                        else
                                                        {
-                                                           docTruyen.setDC(0);
+                                                           docTruyen.setdc(0);
                                                            binding.exclusiveIB.setBackgroundResource(R.color.transparent);
                                                        }
 
-                                                       hashMap.put("DC", docTruyen.getDC());
+                                                       hashMap.put("DC", docTruyen.getdc());
                                                    }
                                                }
         );
@@ -283,7 +282,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
 
                 }
 
-                if(docTruyen.getYT()==0)
+                if(docTruyen.getyt()==0)
                 {
                     binding.likeIB.setVisibility(View.VISIBLE);
                     binding.like2IB.setVisibility(View.INVISIBLE);
@@ -294,7 +293,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
                     binding.like2IB.setVisibility(View.VISIBLE);
                 }
 
-                if(docTruyen.getDC()==0)
+                if(docTruyen.getdc()==0)
                 {
                     binding.exclusiveIB.setBackgroundResource(R.color.transparent);
                 }
@@ -312,11 +311,11 @@ public class NovelDetailsActivity extends AppCompatActivity {
             }
         });
         hashMap.put("uid", docTruyen.getUid());
-        hashMap.put("maT", docTruyen.getMaT());
-        hashMap.put("dc", docTruyen.getDC());
-        hashMap.put("yt", docTruyen.getYT());
-        hashMap.put("dg", docTruyen.getDG());
-        hashMap.put("dc", docTruyen.getDC());
+        hashMap.put("maT", docTruyen.getmaT());
+        hashMap.put("dc", docTruyen.getdc());
+        hashMap.put("yt", docTruyen.getyt());
+        hashMap.put("dg", docTruyen.getdg());
+        hashMap.put("dc", docTruyen.getdc());
         hashMap.put("chuongDD", docTruyen.getChuongDD());
         hashMap.put("timestamp", docTruyen.getTimestamp());
 
