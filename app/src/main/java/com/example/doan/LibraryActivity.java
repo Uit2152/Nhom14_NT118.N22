@@ -30,7 +30,8 @@ public class LibraryActivity extends AppCompatActivity {
     //view binding
     private ActivityLibraryActibityBinding binding;
     private RecyclerView recyclerView;
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth auth;
+    private String userType;
     List<Story> storyList = new ArrayList<>();
     private boolean isHistoryClicked = false;
 
@@ -41,17 +42,6 @@ public class LibraryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLibraryActibityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        binding.backBT.setOnClickListener(new View.OnClickListener()
-                                          {
-                                              @Override
-                                              public void onClick(View v)
-                                              {
-                                                  onBackPressed();
-                                              }
-                                          }
-        );
-
 
         recyclerView = findViewById(R.id.LibraryRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -76,7 +66,7 @@ public class LibraryActivity extends AppCompatActivity {
         });
 
         DatabaseReference docRef = database.getReference("DocTruyen");
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         String uid = currentUser.getUid();
         Query query = docRef.orderByChild("uid").equalTo(uid);
@@ -103,7 +93,16 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
 
-
+        getUserType();
+        binding.backBT.setOnClickListener(new View.OnClickListener()
+                                          {
+                                              @Override
+                                              public void onClick(View v)
+                                              {
+                                                  onBackPressed();
+                                              }
+                                          }
+        );
 
 
 
@@ -215,7 +214,10 @@ public class LibraryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(LibraryActivity.this,HomePageUserActivity.class));
+                if(userType.equals("user"))
+                    startActivity(new Intent(LibraryActivity.this,HomePageUserActivity.class));
+                else
+                    startActivity(new Intent(LibraryActivity.this,HomePageAdminActivity.class));
 
             }
         });
@@ -224,7 +226,6 @@ public class LibraryActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 startActivity(new Intent(LibraryActivity.this, AccountActivity.class));
-
             }
         });
     }
@@ -232,5 +233,29 @@ public class LibraryActivity extends AppCompatActivity {
         LibraryAdapter adapter = new LibraryAdapter(storyList);
         recyclerView.setAdapter(adapter);
     }
+    private void getUserType()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Users").child(auth.getUid()).child("userType");
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists())
+                {
+                    userType = "" + dataSnapshot.getValue(String.class);
+                }
+                else {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "onCancelled", databaseError.toException());
+            }
+        });
+
+    }
 }

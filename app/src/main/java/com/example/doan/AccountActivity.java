@@ -1,23 +1,32 @@
 package com.example.doan;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doan.databinding.ActivityAccountBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AccountActivity extends AppCompatActivity {
 
     private ActivityAccountBinding binding;
     //firebase auth
     private FirebaseAuth firebaseAuth;
-
+    private String userType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +34,7 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         firebaseAuth= FirebaseAuth.getInstance();
         checkUser();
-
+        getUserType();
 
         binding.settingsButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -126,7 +135,16 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(AccountActivity.this,HomePageUserActivity.class));
+                if(userType.equals("user"))
+                {
+                    startActivity(new Intent(AccountActivity.this,HomePageUserActivity.class));
+                }
+                else
+                {
+                    startActivity(new Intent(AccountActivity.this,HomePageAdminActivity.class));
+                }
+
+
 
             }
         });
@@ -159,4 +177,29 @@ public class AccountActivity extends AppCompatActivity {
         }
     }
 
+    private void getUserType()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Users").child(firebaseAuth.getUid());
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists())
+                {
+                    userType = "" + dataSnapshot.child("userType").getValue();
+                }
+                else {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "onCancelled", databaseError.toException());
+            }
+        });
+
+    }
 }

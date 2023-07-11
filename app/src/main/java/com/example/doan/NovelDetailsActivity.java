@@ -349,6 +349,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
         hashMap.put("uid", docTruyen.getUid());
         hashMap.put("maT", docTruyen.getMaT());
         hashMap.put("dc", docTruyen.getDC());
+        hashMap.put("dd", docTruyen.getDD());
         hashMap.put("yt", docTruyen.getYT());
         hashMap.put("dg", docTruyen.getDG());
         hashMap.put("dc", docTruyen.getDC());
