@@ -57,7 +57,31 @@ public class NovelDetailsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvchapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        binding.bookmark1IB.setOnClickListener(new View.OnClickListener()
+                                          {
+                                              @Override
+                                              public void onClick(View view)
+                                              {
 
+                                                  docTruyen.setDD(1);
+                                                  binding.bookmarkIB.setVisibility(View.VISIBLE);
+                                                  binding.bookmark1IB.setVisibility(View.INVISIBLE);
+                                                  hashMap.put("dd", docTruyen.getDD());
+                                              }
+                                          }
+        );
+        binding.bookmarkIB.setOnClickListener(new View.OnClickListener()
+                                           {
+                                               @Override
+                                               public void onClick(View view)
+                                               {
+                                                   docTruyen.setDD(0);
+                                                   binding.bookmarkIB.setVisibility(View.INVISIBLE);
+                                                   binding.bookmark1IB.setVisibility(View.VISIBLE);
+                                                   hashMap.put("dd", docTruyen.getDD());
+                                               }
+                                           }
+        );
 
 
         binding.backBT.setOnClickListener(new View.OnClickListener()
@@ -99,7 +123,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                                   docTruyen.setYT(1);
                                                   binding.likeIB.setVisibility(View.INVISIBLE);
                                                   binding.like2IB.setVisibility(View.VISIBLE);
-                                                  hashMap.put("YT", docTruyen.getYT());
+                                                  hashMap.put("yt", docTruyen.getYT());
                                               }
                                           }
         );
@@ -111,7 +135,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                                       docTruyen.setYT(0);
                                                       binding.likeIB.setVisibility(View.VISIBLE);
                                                       binding.like2IB.setVisibility(View.INVISIBLE);
-                                                      hashMap.put("YT", docTruyen.getYT());
+                                                      hashMap.put("yt", docTruyen.getYT());
                                               }
                                           }
         );
@@ -141,7 +165,7 @@ public class NovelDetailsActivity extends AppCompatActivity {
                                                            binding.exclusiveIB.setBackgroundResource(R.color.transparent);
                                                        }
 
-                                                       hashMap.put("DC", docTruyen.getDC());
+                                                       hashMap.put("dc", docTruyen.getDC());
                                                    }
                                                }
         );
@@ -281,6 +305,17 @@ public class NovelDetailsActivity extends AppCompatActivity {
                 }
                 else {
 
+                }
+
+                if(docTruyen.getDD()==0)
+                {
+                    binding.bookmarkIB.setVisibility(View.INVISIBLE);
+                    binding.bookmark1IB.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    binding.bookmarkIB.setVisibility(View.VISIBLE);
+                    binding.bookmark1IB.setVisibility(View.INVISIBLE);
                 }
 
                 if(docTruyen.getYT()==0)
